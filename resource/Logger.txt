@@ -1,0 +1,14 @@
+{
+  "dateStartOperatingLogger": "Jun 15, 2021, 3:57:29 PM",
+  "userName": "aa",
+  "lastChange": "Jun 15, 2021, 6:33:37 PM",
+  "commands": [
+    "ERROR,Tue Jun 15 15:57:41 IRDT 2021,LEVEL NOT OPENED. ",
+    "INFO,Tue Jun 15 15:57:42 IRDT 2021,STARTED THE GAME. ",
+    "INFO ,Tue Jun 15 15:57:46 IRDT 2021, inquiry command",
+    "INFO,Tue Jun 15 18:32:28 IRDT 2021,BUY turkey .",
+    "INFO,Tue Jun 15 18:32:33 IRDT 2021,BUY chicken .",
+    "INFO,Tue Jun 15 18:32:40 IRDT 2021,plant in x : 1.0 ,y : 1.0.",
+    "INFO,Tue Jun 15 18:32:45 IRDT 2021,plant in x : 2.0 ,y : 2.0."
+  ]
+}

@@ -58,7 +58,7 @@ public class Signin extends Menu{
         password=scanner.nextLine();
         System.out.print(Color.RESET);
         HashMap<String,Person> personHashMap=this.manager.personsController.getUserNamePersonMap();
-        personHashMap.put(userName,new Person(userName,password,new HashMap<>(),new HashMap<>(),0));
+        personHashMap.put(userName,new Person(userName,password,0));
         this.manager.personsController.setUserNamePersonMap(personHashMap);
         this.manager.personsController.setCurrentUser(this.manager.personsController.getUserNamePersonMap().get(userName));
         System.out.println("your userName is \" "+userName+"\" \n your password is \" "+password+"\"");

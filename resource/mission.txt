@@ -1,0 +1,823 @@
+{
+  "numberOfLevels": 10,
+  "levels": [
+    {
+      "startCoins": 2000,
+      "task1": "CHICKEN",
+      "task1Number": 1,
+      "task2": "EGG",
+      "task2Number": 1,
+      "task3": "COIN",
+      "task3Number": 500,
+      "TimeOfTigerComes": {
+        "180": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfLionComes": {
+        "120": {
+          "cautch": 3,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 300,
+          "name": "LION",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfBearComes": {
+        "60": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "maxTime": 360,
+      "presentCoin": 100
+    },
+    {
+      "startCoins": 400,
+      "task1": "CHICKEN",
+      "task1Number": 10,
+      "task2": "COOKIE",
+      "task2Number": 5,
+      "task3": "FLOUR",
+      "task3Number": 5,
+      "TimeOfTigerComes": {
+        "50": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "180": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfLionComes": {
+        "120": {
+          "cautch": 3,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 300,
+          "name": "LION",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfBearComes": {
+        "40": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "60": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "maxTime": 500,
+      "presentCoin": 300
+    },
+    {
+      "startCoins": 300,
+      "task1": "FEATHER",
+      "task1Number": 4,
+      "task2": "TURKEY",
+      "task2Number": 5,
+      "task3": "COIN",
+      "task3Number": 500,
+      "TimeOfTigerComes": {
+        "180": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfLionComes": {
+        "100": {
+          "cautch": 3,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 300,
+          "name": "LION",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfBearComes": {
+        "100": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "40": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "60": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "maxTime": 400,
+      "presentCoin": 600
+    },
+    {
+      "startCoins": 500,
+      "task1": "FEATHER",
+      "task1Number": 10,
+      "task2": "TURKEY",
+      "task2Number": 10,
+      "task3": "SILK",
+      "task3Number": 5,
+      "TimeOfTigerComes": {
+        "70": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfLionComes": {
+        "100": {
+          "cautch": 3,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 300,
+          "name": "LION",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "101": {
+          "cautch": 3,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 300,
+          "name": "LION",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfBearComes": {
+        "100": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "180": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "maxTime": 600,
+      "presentCoin": 500
+    },
+    {
+      "startCoins": 200,
+      "task1": "BUFALLO",
+      "task1Number": 2,
+      "task2": "MILK",
+      "task2Number": 10,
+      "task3": "COIN",
+      "task3Number": 700,
+      "TimeOfTigerComes": {
+        "50": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfLionComes": {
+        "61": {
+          "cautch": 3,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 300,
+          "name": "LION",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "62": {
+          "cautch": 3,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 300,
+          "name": "LION",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfBearComes": {
+        "100": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "180": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "40": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "maxTime": 460,
+      "presentCoin": 500
+    },
+    {
+      "startCoins": 700,
+      "task1": "BUFALLO",
+      "task1Number": 5,
+      "task2": "MILK",
+      "task2Number": 20,
+      "task3": "SEPARATEDMILK",
+      "task3Number": 10,
+      "TimeOfTigerComes": {
+        "50": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "70": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfLionComes": {
+        "120": {
+          "cautch": 3,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 300,
+          "name": "LION",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfBearComes": {
+        "100": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "101": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "maxTime": 900,
+      "presentCoin": 600
+    },
+    {
+      "startCoins": 800,
+      "task1": "MILK",
+      "task1Number": 20,
+      "task2": "SEPARATEDMILK",
+      "task2Number": 10,
+      "task3": "ICECREAM",
+      "task3Number": 15,
+      "TimeOfTigerComes": {
+        "50": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfLionComes": {
+        "61": {
+          "cautch": 3,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 300,
+          "name": "LION",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "62": {
+          "cautch": 3,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 300,
+          "name": "LION",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfBearComes": {
+        "180": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "101": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "102": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "40": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "maxTime": 660,
+      "presentCoin": 600
+    },
+    {
+      "startCoins": 200,
+      "task1": "TIGERDOLL",
+      "task1Number": 2,
+      "task2": "COIN",
+      "task2Number": 450,
+      "task3": "BUFALLO",
+      "task3Number": 4,
+      "TimeOfTigerComes": {
+        "50": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "180": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "70": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfLionComes": {
+        "100": {
+          "cautch": 3,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 300,
+          "name": "LION",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "62": {
+          "cautch": 3,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 300,
+          "name": "LION",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfBearComes": {
+        "100": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "40": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "60": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "61": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "maxTime": 200,
+      "presentCoin": 300
+    },
+    {
+      "startCoins": 200,
+      "task1": "FEATHER",
+      "task1Number": 20,
+      "task2": "TURKEY",
+      "task2Number": 5,
+      "task3": "SILK",
+      "task3Number": 5,
+      "TimeOfTigerComes": {
+        "50": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "180": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "70": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfLionComes": {
+        "61": {
+          "cautch": 3,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 300,
+          "name": "LION",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "62": {
+          "cautch": 3,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 300,
+          "name": "LION",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfBearComes": {
+        "100": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "180": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "101": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "102": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "40": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "60": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "maxTime": 150,
+      "presentCoin": 400
+    },
+    {
+      "startCoins": 400,
+      "task1": "TURKEY",
+      "task1Number": 5,
+      "task2": "SILK",
+      "task2Number": 10,
+      "task3": "CLOTH",
+      "task3Number": 10,
+      "TimeOfTigerComes": {
+        "50": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "180": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "70": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "120": {
+          "cautch": 4,
+          "footStep": 2.0,
+          "livies": 100,
+          "cost": 500,
+          "name": "TIGER",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfLionComes": {
+        "100": {
+          "cautch": 3,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 300,
+          "name": "LION",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "101": {
+          "cautch": 3,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 300,
+          "name": "LION",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "120": {
+          "cautch": 3,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 300,
+          "name": "LION",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "61": {
+          "cautch": 3,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 300,
+          "name": "LION",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "TimeOfBearComes": {
+        "100": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "180": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "101": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "102": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "40": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "60": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "61": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        },
+        "62": {
+          "cautch": 4,
+          "footStep": 1.0,
+          "livies": 100,
+          "cost": 400,
+          "name": "BEAR",
+          "x": 3.0,
+          "y": 3.0
+        }
+      },
+      "maxTime": 260,
+      "presentCoin": 500
+    }
+  ]
+}

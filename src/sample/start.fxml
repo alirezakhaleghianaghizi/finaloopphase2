@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane alignment="center" hgap="10" prefHeight="411.0" prefWidth="287.0" vgap="10" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="178.0" prefWidth="171.0" GridPane.columnIndex="1">
+         <children>
+            <ImageView fx:id="firstimage" fitHeight="476.0" fitWidth="329.0" layoutX="-22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@picturse/start.jpeg" />
+               </image>
+            </ImageView>
+            <Button layoutX="175.0" layoutY="362.0" mnemonicParsing="false" onAction="#switchToSignIn" prefHeight="37.0" prefWidth="117.0" text="Signin page" />
+            <Button layoutX="84.0" layoutY="422.0" mnemonicParsing="false" onAction="#exit" prefHeight="37.0" prefWidth="117.0" text="exit " />
+            <Button layoutY="362.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="37.0" prefWidth="117.0" text="login page" />
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>
