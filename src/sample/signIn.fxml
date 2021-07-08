@@ -53,9 +53,9 @@
                   <Font name="Poor Richard" size="27.0" />
                </font>
             </Label>
-            <Label fx:id="massagelable" layoutX="223.0" layoutY="185.0" prefHeight="31.0" prefWidth="260.0" text="welcome">
+            <Label fx:id="massagelable" layoutX="223.0" layoutY="185.0" prefHeight="32.0" prefWidth="409.0" text="welcome">
                <font>
-                  <Font name="Poor Richard" size="28.0" />
+                  <Font name="Poor Richard" size="24.0" />
                </font>
             </Label>
          </children>

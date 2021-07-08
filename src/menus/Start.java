@@ -18,6 +18,7 @@ public class Start extends Menu{
     @Override
     public void show() {
         System.out.println("");
+
         System.out.print(Color.CYAN_BOLD_BRIGHT);
         System.out.println("Enter The Level You Want To Play");
         level=-1;

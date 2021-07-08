@@ -30,7 +30,7 @@ public class MainController {
     public AllLevels allLevels;
     public ControllerGadget gadgets;
     public PersonsController personsController;
-    Timing timing;
+    public Timing timing;
     public Logger logger ;
     public boolean isTasksCompleted;
     public static HashMap<WildAnimal, HashMap<Integer, Integer>> cageTimeSet;

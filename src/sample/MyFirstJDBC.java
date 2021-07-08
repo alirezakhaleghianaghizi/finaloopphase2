@@ -33,9 +33,10 @@ public class MyFirstJDBC {
                 String sql = "INSERT INTO user" +
                         " (username,password,max_pass_level,current_level,coins,total_coins)" +
                         "values('" + usernameIn + "','" + passwordIn + "'," + maxLevel + "," + currentLevel + "," + coins + "," + total_coins + ");";
-                statement.executeUpdate(sql);
                 this.controller.personsController.CurrentUser=new Person(user,pass,0);
+                this.controller.personsController.CurrentUser.currentLevel=this.controller.allLevels.levels.get(0);
                 this.controller.personsController.isAnyOneInTheGame=true;
+                statement.executeUpdate(sql);
                 return true;
             }
 
@@ -44,13 +45,13 @@ public class MyFirstJDBC {
         }
         return false;
     }
+
     public int reloadUser(String user,String pass) {
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
             Statement statement = connection.createStatement();
-            ResultSet resultset = statement.executeQuery("select username from user where username =" + "'" + user + "'");
+            ResultSet resultset = statement.executeQuery("select * from user where username =" + "'" + user + "' and password ="+"'"+pass+"'");
             if (!resultset.next()) return -1;
-            else if(!resultset.getString("password").equalsIgnoreCase(pass)) return 0;
             else {
                 Person person =new Person(user,pass,0);
                 person.level=Integer.parseInt(resultset.getString("max_pass_level"));
@@ -65,8 +66,9 @@ public class MyFirstJDBC {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return -1;
+        return -2;
     }
+
     public int newUser() {
         try {
             String user=this.controller.personsController.CurrentUser.userName;
@@ -94,11 +96,14 @@ public class MyFirstJDBC {
     }
 
 
+    public static void main(String[] args) {
 
-    public void newingUser() {
         try {
+            String url="jdbc:mysql://localhost:3306/people";
+            String username="root";
+            String password="99101462";
             Scanner scanner =new Scanner(System.in);
-             connection = DriverManager.getConnection(url,username,password);
+            Connection connection = DriverManager.getConnection(url,username,password);
             Statement statement =connection.createStatement();
             for (int i = 0; i <1 ; i++) {
                 String usernameIn=scanner.nextLine();
