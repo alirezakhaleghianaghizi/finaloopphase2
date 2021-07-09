@@ -92,7 +92,7 @@ public class ControllGame {
         public void level8Button(ActionEvent event){this.goingToLevel(event,8);}
         public void level9Button(ActionEvent event){this.goingToLevel(event,9);}
         public void level10Button(ActionEvent event){this.goingToLevel(event,10);}
-        
+
         public void goingToLevel(ActionEvent event,int level){
                 if(level<=this.mainController.personsController.CurrentUser.level+1){
                         this.mainController.personsController.CurrentUser.currentLevel=this.mainController.allLevels.levels.get(level-1);
@@ -102,12 +102,12 @@ public class ControllGame {
                         Controller.logger("WARNING".toUpperCase(),"START LEVEL "+level);
                 }
                 else{
-                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("lock");
                         alert.setHeaderText("not open level");
                         alert.setContentText(level+" is lock for you");
                         alert.show();
-                        Controller.logger("WARNING".toUpperCase(),"NOT open level".toUpperCase()+" "+level);
+                        Controller.logger("ERROR".toUpperCase(),"NOT open level".toUpperCase()+" "+level);
                 }
         }
 

@@ -139,9 +139,13 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
     }
 
-
+    public void check(){
+        System.out.println("ok");
+    }
 
 
 
