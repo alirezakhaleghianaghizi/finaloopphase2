@@ -46,20 +46,7 @@ public class ControllGame {
         private Button l;
         @FXML
         private Button m;
-        @FXML
-        private TextField text1;
-        @FXML
-        private TextField text2;
-        @FXML
-        private TextField text3;
-        @FXML
-        private TextField text4;
-        @FXML
-        private TextField text5;
-        @FXML
-        private TextField userLoger;
-        @FXML
-        private TextField lastChangDate;
+
 
         public void setUsernameLable(){
                 massageUser.setText(mainController.personsController.CurrentUser.userName);
@@ -116,26 +103,7 @@ public class ControllGame {
                         Controller.logger("WARNING".toUpperCase(),"NOT open level".toUpperCase()+" "+level);
                 }
         }
-        public void loggerPage(ActionEvent event){
-                try {
-                        this.LoggerPage=0;
-                        renewTextsLoger(Controller.logger.commands.size());
-                        userLoger.setText(this.mainController.personsController.CurrentUser.userName);
-                        lastChangDate.setText(Controller.logger.lastChange.toString());
-                        root = FXMLLoader.load(getClass().getResource("loggerPage.fxml"));
-                        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                        scene = new Scene(root);
-                        Controller.logger("ALARM","SWITCHING TO SIGN IN PAGE");
-                        stage.setScene(scene);
-                        stage.show();
-                } catch (IOException ioException) {
-                        ioException.printStackTrace();
-                }
 
-        }
-        public void homepage(ActionEvent event){
-
-        }
         public void resumeLastGame(){
 
         }
@@ -150,31 +118,23 @@ public class ControllGame {
                 MainController.cageTimeSet=new HashMap<>();
         }
 
-        public void nextKey(){
-                int goodNumbers=Controller.logger.commands.size();
-                if(goodNumbers/5>LoggerPage){
-                        this.LoggerPage++;
-                        this.renewTextsLoger(goodNumbers);
+        public void loggerPage(ActionEvent event){
+                try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("loggerPage.fxml"));
+                        root = loader.load();
+                        LoggerGraphic loggerGraphic = loader.getController();
+                        Controller.logger("ALARM","SWITCHING TO LOGGER PAGE");
+                        loggerGraphic.mainController=this.mainController;
+                        loggerGraphic.LoggerPage=0;
+                        loggerGraphic.renewTextsLoger(Controller.logger.commands.size());
+                        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                        scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+                } catch (IOException ioException) {
+                        ioException.printStackTrace();
                 }
-        }
-        public void previousKey(){
-                int goodNumbers=Controller.logger.commands.size();
-                if(0<LoggerPage){
-                        this.LoggerPage--;
-                        this.renewTextsLoger(goodNumbers);
-                }
-        }
-        public void renewTextsLoger(int gooNumber){
-        int index=gooNumber-LoggerPage*5-1;
-        if(index>0) text1.setText(Controller.logger.commands.get(index));
-        index=gooNumber-LoggerPage*5-2;
-        if(index>0) text2.setText(Controller.logger.commands.get(index));
-        index=gooNumber-LoggerPage*5-3;
-        if(index>0) text3.setText(Controller.logger.commands.get(index));
-        index=gooNumber-LoggerPage*5-4;
-        if(index>0) text4.setText(Controller.logger.commands.get(index));
-        index=gooNumber-LoggerPage*5-5;
-        if(index>0) text5.setText(Controller.logger.commands.get(index));
+
         }
 
 }

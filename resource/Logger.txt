@@ -1,8 +1,9 @@
 {
-  "dateStartOperatingLogger": "Jul 8, 2021, 9:39:38 PM",
-  "lastChange": "Jul 8, 2021, 9:39:46 PM",
+  "dateStartOperatingLogger": "Jul 9, 2021, 4:08:09 PM",
+  "lastChange": "Jul 9, 2021, 4:08:28 PM",
   "commands": [
-    "ALARM,Thu Jul 08 21:39:39 IRDT 2021,SWITCHING TO LOG IN PAGE. ",
-    "ALARM,Thu Jul 08 21:39:46 IRDT 2021,LOG IN. "
+    "ALARM,Fri Jul 09 16:08:14 IRDT 2021,SWITCHING TO LOG IN PAGE. ",
+    "ALARM,Fri Jul 09 16:08:22 IRDT 2021,LOG IN. ",
+    "ALARM,Fri Jul 09 16:08:28 IRDT 2021,SWITCHING TO LOGGER PAGE. "
   ]
 }

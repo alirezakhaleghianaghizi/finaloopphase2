@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="439.0" prefWidth="610.0" style="-fx-background-color: yellow;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllGame">
+<AnchorPane prefHeight="439.0" prefWidth="610.0" style="-fx-background-color: yellow;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoggerGraphic">
    <children>
-      <TextField fx:id="text1" editable="false" layoutX="42.0" layoutY="107.0" prefHeight="25.0" prefWidth="515.0" style="-fx-background-color: cyan;" text="1" />
-      <TextField fx:id="text2" editable="false" layoutX="42.0" layoutY="150.0" prefHeight="25.0" prefWidth="515.0" style="-fx-background-color: cyan;" text="2" />
-      <TextField fx:id="text3" editable="false" layoutX="42.0" layoutY="207.0" prefHeight="25.0" prefWidth="515.0" style="-fx-background-color: cyan;" text="3" />
-      <TextField fx:id="text4" editable="false" layoutX="42.0" layoutY="258.0" prefHeight="25.0" prefWidth="515.0" style="-fx-background-color: cyan;" text="4" />
-      <TextField fx:id="text5" editable="false" layoutX="42.0" layoutY="316.0" prefHeight="25.0" prefWidth="515.0" style="-fx-background-color: cyan;" text="5" />
-      <Button layoutX="264.0" layoutY="381.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="82.0" style="-fx-background-color: green;" text="home" />
-      <Button layoutX="511.0" layoutY="386.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="91.0" text="next page" />
-      <Button layoutX="14.0" layoutY="386.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="104.0" text="previous page" />
-      <TextField fx:id="lastChangDate" editable="false" layoutX="33.0" layoutY="67.0" prefHeight="25.0" prefWidth="525.0" style="-fx-background-color: cyan;" text="last change date" />
-      <TextField fx:id="userLoger" editable="false" layoutX="33.0" layoutY="24.0" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: cyan;" text="user" />
+      <TextField fx:id="text1" editable="false" layoutX="42.0" layoutY="155.0" prefHeight="25.0" prefWidth="515.0" style="-fx-background-color: cyan;" text="1" />
+      <TextField fx:id="text2" editable="false" layoutX="42.0" layoutY="200.0" prefHeight="25.0" prefWidth="515.0" style="-fx-background-color: cyan;" text="2" />
+      <TextField fx:id="text3" editable="false" layoutX="42.0" layoutY="250.0" prefHeight="25.0" prefWidth="515.0" style="-fx-background-color: cyan;" text="3" />
+      <TextField fx:id="text4" editable="false" layoutX="42.0" layoutY="294.0" prefHeight="25.0" prefWidth="515.0" style="-fx-background-color: cyan;" text="4" />
+      <TextField fx:id="text5" editable="false" layoutX="42.0" layoutY="341.0" prefHeight="25.0" prefWidth="515.0" style="-fx-background-color: cyan;" text="5" />
+      <Button layoutX="264.0" layoutY="381.0" mnemonicParsing="false" onAction="#homepage" prefHeight="41.0" prefWidth="82.0" style="-fx-background-color: green;" text="home" />
+      <Button layoutX="511.0" layoutY="386.0" mnemonicParsing="false" onAction="#nextKey" prefHeight="31.0" prefWidth="91.0" text="next page" />
+      <Button layoutX="14.0" layoutY="386.0" mnemonicParsing="false" onAction="#previousKey" prefHeight="31.0" prefWidth="104.0" text="previous page" />
+      <TextField fx:id="lastChangDate" editable="false" layoutX="124.0" layoutY="112.0" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: green; -fx-text-fill: white;" text="last change date">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <TextField fx:id="userLoger" editable="false" layoutX="124.0" layoutY="35.0" prefHeight="25.0" prefWidth="163.0" promptText="ff" style="-fx-background-color: green; -fx-text-fill: white;" text="user">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></TextField>
+      <Label layoutX="42.0" layoutY="39.0" text="user" />
+      <Label layoutX="37.0" layoutY="78.0" prefHeight="18.0" prefWidth="62.0" text="start date" />
+      <Label layoutX="41.0" layoutY="116.0" text="laste changl" />
+      <TextField fx:id="startDate" editable="false" layoutX="124.0" layoutY="72.0" prefHeight="29.0" prefWidth="250.0" promptText="ff" style="-fx-background-color: green; -fx-text-fill: white;" text="user">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>
