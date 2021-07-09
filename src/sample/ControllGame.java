@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.stage.Stage;
+import menus.Logger;
 import view.Timing;
 
 import java.io.IOException;
@@ -71,6 +72,7 @@ public class ControllGame {
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         scene = new Scene(root);
                         Controller.logger("WARNING","LOG OUT");
+                        Controller.logger=new Logger();
                         stage.setScene(scene);
                         stage.show();
                 }
@@ -80,18 +82,22 @@ public class ControllGame {
                 System.out.println("ok");
         }
 
-        public void level1Button(ActionEvent event){this.goingToLevel(1);}
-        public void level2Button(ActionEvent event){this.goingToLevel(1);}
-        public void level3Button(ActionEvent event){this.goingToLevel(1);}
-        public void level4Button(ActionEvent event){this.goingToLevel(1);}
-        public void level5Button(ActionEvent event){this.goingToLevel(1);}
-        public void level6Button(ActionEvent event){this.goingToLevel(1);}
-        public void level7Button(ActionEvent event){this.goingToLevel(1);}
-        public void level8Button(ActionEvent event){this.goingToLevel(1);}
-        public void level9Button(ActionEvent event){this.goingToLevel(1);}
-        public void level10Button(ActionEvent event){this.goingToLevel(1);}
-        public void goingToLevel(int level){
+        public void level1Button(ActionEvent event){this.goingToLevel(event,1);}
+        public void level2Button(ActionEvent event){this.goingToLevel(event,2);}
+        public void level3Button(ActionEvent event){this.goingToLevel(event,3);}
+        public void level4Button(ActionEvent event){this.goingToLevel(event,4);}
+        public void level5Button(ActionEvent event){this.goingToLevel(event,5);}
+        public void level6Button(ActionEvent event){this.goingToLevel(event,6);}
+        public void level7Button(ActionEvent event){this.goingToLevel(event,7);}
+        public void level8Button(ActionEvent event){this.goingToLevel(event,8);}
+        public void level9Button(ActionEvent event){this.goingToLevel(event,9);}
+        public void level10Button(ActionEvent event){this.goingToLevel(event,10);}
+        
+        public void goingToLevel(ActionEvent event,int level){
                 if(level<=this.mainController.personsController.CurrentUser.level+1){
+                        this.mainController.personsController.CurrentUser.currentLevel=this.mainController.allLevels.levels.get(level-1);
+                        this.myFirstJDBC=new MyFirstJDBC(this.mainController);
+                        this.myFirstJDBC.newUser();
                         this.newingMainControllerDetails();
                         Controller.logger("WARNING".toUpperCase(),"START LEVEL "+level);
                 }
@@ -100,6 +106,7 @@ public class ControllGame {
                         alert.setTitle("lock");
                         alert.setHeaderText("not open level");
                         alert.setContentText(level+" is lock for you");
+                        alert.show();
                         Controller.logger("WARNING".toUpperCase(),"NOT open level".toUpperCase()+" "+level);
                 }
         }

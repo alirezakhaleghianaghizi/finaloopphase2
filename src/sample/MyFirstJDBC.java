@@ -78,13 +78,13 @@ public class MyFirstJDBC {
             ResultSet resultset = statement.executeQuery("select username from user where username =" + "'" + user + "'");
             if (!resultset.next()) return -1;
             else {
-                String sql="UPDATE people SET coins ="+this.controller.personsController.CurrentUser.coins+" WHERE username="+"'"+user+"'";
+                String sql="UPDATE user SET coins ="+this.controller.personsController.CurrentUser.coins+" WHERE username="+"'"+user+"'";
                  statement.executeUpdate(sql);
-                  sql="UPDATE people SET total_coins="+this.controller.personsController.CurrentUser.totalCoins+" WHERE username="+"'"+user+"'";
+                  sql="UPDATE user SET total_coins="+this.controller.personsController.CurrentUser.totalCoins+" WHERE username="+"'"+user+"'";
                  statement.executeUpdate(sql);
-                  sql="UPDATE people SET max_pass_level="+this.controller.personsController.CurrentUser.level+" WHERE username="+"'"+user+"'";
+                  sql="UPDATE user SET max_pass_level="+this.controller.personsController.CurrentUser.level+" WHERE username="+"'"+user+"'";
                  statement.executeUpdate(sql);
-                  sql="UPDATE people SET current_level="+(this.controller.allLevels.levels.indexOf(this.controller.personsController.CurrentUser.currentLevel)+1)+" WHERE username="+"'"+user+"'";
+                  sql="UPDATE user SET current_level="+(this.controller.allLevels.levels.indexOf(this.controller.personsController.CurrentUser.currentLevel)+1)+" WHERE username="+"'"+user+"'";
                  statement.executeUpdate(sql);
                 return 1;
             }
