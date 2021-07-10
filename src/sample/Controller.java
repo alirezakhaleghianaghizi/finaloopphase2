@@ -108,6 +108,12 @@ public class Controller {
 
         if (alert.showAndWait().get() == ButtonType.OK){
             System.out.println("You successfully exit ");
+            FXMLLoader loader =new FXMLLoader(getClass().getResource("start.fxml"));
+            root =loader.load();
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
             stage.close();
             Controller.logger("Alarm".toUpperCase(),"succesfully exit".toUpperCase());
         }else{

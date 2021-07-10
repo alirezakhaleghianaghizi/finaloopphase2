@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="585.0" prefWidth="720.0" style="-fx-background-color: #7fd65e;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GamePage">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d4aa5d" height="354.0" layoutX="121.0" layoutY="140.0" stroke="BLACK" strokeType="INSIDE" width="479.0" />
+      <Button layoutX="14.0" layoutY="533.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="63.0" style="-fx-background-color: red;" text="menu" textFill="WHITE">
+         <font>
+            <Font name="Poor Richard" size="17.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="149.0" fitWidth="315.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/animalsBuyBar.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="63.0" layoutY="40.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: gold;" text="200" />
+      <Button layoutX="4.0" layoutY="40.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: gold;" text="100" />
+      <Button layoutX="250.0" layoutY="40.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: gold;" text="150" />
+      <Button layoutX="187.0" layoutY="40.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: gold;" text="100" />
+      <Button layoutX="124.0" layoutY="40.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: gold;" text="400" />
+      <ImageView fx:id="weel" fitHeight="71.0" fitWidth="91.0" layoutX="346.0" layoutY="53.0" onMousePressed="#weel" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/weel.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="truck" fitHeight="90.0" fitWidth="109.0" layoutX="119.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/truck.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="32.0" layoutY="224.0" text="Label" textFill="#7fd65e" />
+      <ImageView fx:id="warhouse" fitHeight="90.0" fitWidth="147.0" layoutX="269.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/warhouse.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

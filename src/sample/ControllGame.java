@@ -100,6 +100,7 @@ public class ControllGame {
                         this.myFirstJDBC.newUser();
                         this.newingMainControllerDetails();
                         Controller.logger("WARNING".toUpperCase(),"START LEVEL "+level);
+                        switchingGamePage(event);
                 }
                 else{
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -111,8 +112,26 @@ public class ControllGame {
                 }
         }
 
-        public void resumeLastGame(){
+        public void switchingGamePage(ActionEvent event){
+                try {
+                        root = FXMLLoader.load(getClass().getResource("gamePage.fxml"));
+                        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                        scene = new Scene(root);
+                        Controller.logger("WARNING","GAME PAGE .");
+                        GamePage gamePage =new GamePage();
+                        gamePage.mainController=this.mainController;
+                        stage.setScene(scene);
+                        stage.show();
+                }
+                catch (Exception e){
+                        e.printStackTrace();
+                }
 
+        }
+
+        public void resumeLastGame(ActionEvent event){
+        Controller.logger("WARNING","RESUME GAME .");
+        this.switchingGamePage(event);
         }
 
         public void newingMainControllerDetails(){
