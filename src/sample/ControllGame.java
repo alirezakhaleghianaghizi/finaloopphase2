@@ -8,18 +8,21 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.Background;
 import javafx.stage.Stage;
 import menus.Logger;
 import view.Timing;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Timer;
 
 public class ControllGame {
         MainController mainController;
         MyFirstJDBC myFirstJDBC;
         private int LoggerPage;
+        public static int sec,min;
+        public static boolean state;
+        public static Timer timer = new Timer();
         @FXML
         private Label massageUser;
         private Stage stage;
@@ -47,17 +50,16 @@ public class ControllGame {
         private Button l;
         @FXML
         private Button m;
-
+        GamePage gamePage =new GamePage();
 
         public void setUsernameLable(){
-                massageUser.setText(mainController.personsController.CurrentUser.userName);
-                levellable.setText("LEVEL = "+mainController.personsController.CurrentUser.level);
+                massageUser.setText(Controller.mainController.personsController.CurrentUser.userName);
+                levellable.setText("LEVEL = "+Controller.mainController.personsController.CurrentUser.level);
         }
         public void buttonColor(){
-                int maxLevel=this.mainController.personsController.CurrentUser.level;
+                int maxLevel=Controller.mainController.personsController.CurrentUser.level;
                 Button[] buttonLevel={a,b,c,d,e,f,g,h,l,m};
                 for (int i = 0; i < buttonLevel.length; i++) {
-                        System.out.println(i);
                         if(maxLevel<i) buttonLevel[i].setStyle("-fx-background-color: #ff0000; ");
                         else buttonLevel[i].setStyle("-fx-background-color: #00FFFF; ");
                 }
@@ -94,12 +96,17 @@ public class ControllGame {
         public void level10Button(ActionEvent event){this.goingToLevel(event,10);}
 
         public void goingToLevel(ActionEvent event,int level){
-                if(level<=this.mainController.personsController.CurrentUser.level+1){
-                        this.mainController.personsController.CurrentUser.currentLevel=this.mainController.allLevels.levels.get(level-1);
-                        this.myFirstJDBC=new MyFirstJDBC(this.mainController);
+                if(level<=Controller.mainController.personsController.CurrentUser.level+1){
+                        Controller.mainController.personsController.CurrentUser.currentLevel=Controller.mainController.allLevels.levels.get(level-1);
+                        this.myFirstJDBC=new MyFirstJDBC(Controller.mainController);
                         this.myFirstJDBC.newUser();
                         this.newingMainControllerDetails();
+                        gamePage =new GamePage();
                         Controller.logger("WARNING".toUpperCase(),"START LEVEL "+level);
+                        ControllGame.min=0;
+                        ControllGame.sec=0;
+                        ControllGame.state=false;
+                        ControllGame.timer=new Timer();
                         switchingGamePage(event);
                 }
                 else{
@@ -114,12 +121,17 @@ public class ControllGame {
 
         public void switchingGamePage(ActionEvent event){
                 try {
-                        root = FXMLLoader.load(getClass().getResource("gamePage.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("gamePage.fxml"));
+                        root = loader.load();
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         scene = new Scene(root);
                         Controller.logger("WARNING","GAME PAGE .");
-                        GamePage gamePage =new GamePage();
-                        gamePage.mainController=this.mainController;
+                        GamePage gamePage = loader.getController();
+                        gamePage.sec=ControllGame.sec;
+                        gamePage.min=ControllGame.min;
+                        gamePage.state=ControllGame.state;
+                        gamePage.timer=ControllGame.timer;
+                        gamePage.renew();
                         stage.setScene(scene);
                         stage.show();
                 }
@@ -135,12 +147,12 @@ public class ControllGame {
         }
 
         public void newingMainControllerDetails(){
-                this.mainController.goods=new ControllerGoods();
-                this.mainController.factories=new ControllerFactory();
-                this.mainController.animals=new ControllerAnimal();
-                this.mainController.gadgets=new ControllerGadget();
-                this.mainController.timing=new Timing();
-                this.mainController.isTasksCompleted=false;
+                Controller.mainController.goods=new ControllerGoods();
+                Controller.mainController.factories=new ControllerFactory();
+                Controller.mainController.animals=new ControllerAnimal();
+                Controller.mainController.gadgets=new ControllerGadget();
+                Controller.mainController.timing=new Timing();
+                Controller.mainController.isTasksCompleted=false;
                 MainController.cageTimeSet=new HashMap<>();
         }
 
@@ -150,7 +162,7 @@ public class ControllGame {
                         root = loader.load();
                         LoggerGraphic loggerGraphic = loader.getController();
                         Controller.logger("ALARM","SWITCHING TO LOGGER PAGE");
-                        loggerGraphic.mainController=this.mainController;
+                        loggerGraphic.mainController=Controller.mainController;
                         loggerGraphic.LoggerPage=0;
                         loggerGraphic.renewTextsLoger(Controller.logger.commands.size());
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

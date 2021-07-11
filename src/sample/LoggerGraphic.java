@@ -52,7 +52,7 @@ public class LoggerGraphic {
             root = loader.load();
             ControllGame controllGame = loader.getController();
             Controller.logger("ALARM","SWITCHING TO HOME PAGE");
-            controllGame.mainController=this.mainController;
+            controllGame.mainController=Controller.mainController;
             controllGame.setUsernameLable();
             controllGame.buttonColor();
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -78,7 +78,7 @@ public class LoggerGraphic {
         }
     }
     public void renewTextsLoger(int gooNumber){
-        userLoger.setText(this.mainController.personsController.CurrentUser.userName);
+        userLoger.setText(Controller.mainController.personsController.CurrentUser.userName);
         lastChangDate.setText(Controller.logger.lastChange.toString());
         startDate.setText(Controller.logger.dateStartOperatingLogger.toString());
         int index=gooNumber-LoggerPage*5-1;

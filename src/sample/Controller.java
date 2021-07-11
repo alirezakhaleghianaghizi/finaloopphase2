@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.Date;
 
 public class Controller {
-    MainController  mainController;
+    public static MainController  mainController;
     MyFirstJDBC myFirstJDBC;
     public static Logger logger=new Logger();
     private Stage stage;
@@ -68,12 +68,6 @@ public class Controller {
         else if(myFirstJDBC.reloadUser(usernameto.getText(),passwordto.getText())==1) {
             massagelable.setText("YOU LOG IN");
             Controller.logger("ALARM","LOG IN");
-            System.out.println(this.mainController.personsController.CurrentUser.userName+"\t" +
-                    this.mainController.personsController.CurrentUser.password+"\t"+
-                    this.mainController.personsController.CurrentUser.level+"\t" +
-                    this.mainController.allLevels.levels.indexOf(this.mainController.personsController.CurrentUser.currentLevel)+"\t" +
-                    this.mainController.personsController.CurrentUser.coins+"\t" +
-                    this.mainController.personsController.CurrentUser.totalCoins+"\t");
             this.switchToGameBar(event);
         }
     }
@@ -90,12 +84,6 @@ public class Controller {
         else {
             massagelable.setText("YOU SIGN IN");
             Controller.logger("ALARM","SIGN IN");
-            System.out.println(this.mainController.personsController.CurrentUser.userName+"\t" +
-                    this.mainController.personsController.CurrentUser.password+"\t"+
-                    this.mainController.personsController.CurrentUser.level+"\t" +
-                    this.mainController.allLevels.levels.indexOf(this.mainController.personsController.CurrentUser.currentLevel)+"\t" +
-                    this.mainController.personsController.CurrentUser.coins+"\t" +
-                    this.mainController.personsController.CurrentUser.totalCoins+"\t");
             this.switchToGameBar(event);
         }
     }
