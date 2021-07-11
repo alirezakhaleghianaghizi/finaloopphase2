@@ -8,11 +8,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import menus.Logger;
 import view.Timing;
 
+import javax.swing.text.html.ImageView;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
 
@@ -23,6 +27,7 @@ public class ControllGame {
         public static int sec,min;
         public static boolean state;
         public static Timer timer = new Timer();
+
         @FXML
         private Label massageUser;
         private Stage stage;
@@ -122,9 +127,11 @@ public class ControllGame {
         public void switchingGamePage(ActionEvent event){
                 try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("gamePage.fxml"));
-                        root = loader.load();
+                        AnchorPane root1 = (AnchorPane)loader.load();
+
+                        //root = loader.load();
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                        scene = new Scene(root);
+                        scene = new Scene(root1);
                         Controller.logger("WARNING","GAME PAGE .");
                         GamePage gamePage = loader.getController();
                         gamePage.sec=ControllGame.sec;
@@ -145,6 +152,8 @@ public class ControllGame {
         Controller.logger("WARNING","RESUME GAME .");
         this.switchingGamePage(event);
         }
+
+
 
         public void newingMainControllerDetails(){
                 Controller.mainController.goods=new ControllerGoods();

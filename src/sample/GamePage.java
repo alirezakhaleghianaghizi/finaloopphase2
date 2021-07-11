@@ -10,21 +10,28 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class GamePage {
     MainController mainController;
     @FXML
+    private AnchorPane root12;
     private Stage stage;
+    public static Stage stageOfGame;
     private Scene scene;
-    private Scene sceneGround;
+    @FXML
+    private SubScene sceneGround;
     private Parent root;
     @FXML
     private ImageView weel;
@@ -64,7 +71,7 @@ public class GamePage {
     public static int min=0;
     public static boolean state=false;
     public static Timer timer = new Timer();
-
+    public static ArrayList<ImageView> animals=new ArrayList<ImageView>();
 
 
 
@@ -148,12 +155,8 @@ public void renew() {
 
     public  void start(ActionEvent event) {
             GamePage.timer=new Timer();
-            //puse.setText(Controller.mainController.personsController.CurrentUser.currentLevel.task2);
             this.renew1();
             GamePage.timer.scheduleAtFixedRate(task, 0, 1000);
-            //timer.scheduleAtFixedRate(task, date.getTime(), 1000);
-            //timer.schedule(task, 1000);
-            //timer.schedule(task, date.getTime());
         }
 
 
@@ -161,6 +164,8 @@ public void renew() {
         GamePage.state=false;
         GamePage.timer.cancel();
     }
+
+
     //TODO mach with back work factory
     public void weavingBuild(){if(GamePage.state)this.buildWork(weavingBuild); }
     public void eggPowderBuild(){if(GamePage.state)this.buildWork(eggPowderBuild); }
@@ -235,20 +240,14 @@ public void renew() {
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             Controller.logger("WARNING","menu game bar .");
-       ControllGame controllGame = loader.getController();
-       controllGame.gamePage=this;
+             ControllGame controllGame = loader.getController();
+            controllGame.gamePage=this;
             controllGame.min=GamePage.min;
             controllGame.sec=GamePage.sec;
             controllGame.state=GamePage.state;
             controllGame.timer=GamePage.timer;
-            System.out.println(GamePage.min);
-            System.out.println(GamePage.sec);
-            System.out.println(GamePage.state);
-            System.out.println(controllGame.min);
-            System.out.println(controllGame.sec);
-            System.out.println(controllGame.state);
-       controllGame.setUsernameLable();
-       controllGame.buttonColor();
+            controllGame.setUsernameLable();
+            controllGame.buttonColor();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -257,4 +256,68 @@ public void renew() {
 
     }
 
+    public void addAnimal(ActionEvent event,Image image,Stage stage1){
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("gamePage.fxml"));
+        try {
+            AnchorPane root1 = (AnchorPane)loader.load();
+
+            ImageView imageView = new ImageView(image);
+            imageView.setX(400);
+            imageView.setY(400);
+            GamePage.animals.add(imageView);
+            root1.getChildren().add(imageView);
+            this.stage = stage1;
+            Scene scene = stage1.getScene();
+            root1= (AnchorPane) scene.getRoot();
+            root1.getChildren().add(imageView);
+            scene.setRoot(root1);
+            stage1.setScene(scene);
+            stage1.show();
+            Controller.logger("WARNING","GAME PAGE .");
+
+            renew();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //imageView.setOnMousePressed();
+    }
+    public void buyChicken(ActionEvent event){
+            if(GamePage.state) {
+
+                Image image = new Image(getClass().getResourceAsStream("picturse\\chicken.png"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                this.addAnimal(event, image, GamePage.stageOfGame);
+
+            }
+    }
+    public void buyTurkey(ActionEvent event){
+        if(GamePage.state) {
+            Image image = new Image(getClass().getResourceAsStream("picturse\\turkey.png"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            this.addAnimal(event, image, GamePage.stageOfGame);
+        }
+    }
+    public void buyBuffalo(ActionEvent event){
+        if(GamePage.state) {
+            Image image = new Image(getClass().getResourceAsStream("picturse\\buffalo.png"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            this.addAnimal(event, image, GamePage.stageOfGame);
+        }
+    }
+    public void buyDog(ActionEvent event){
+        if(GamePage.state) {
+            Image image = new Image(getClass().getResourceAsStream("picturse\\dog.png"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            this.addAnimal(event, image, GamePage.stageOfGame);
+        }
+
+    }
+    public void buyCat(ActionEvent event){
+        if(GamePage.state) {
+            Image image = new Image(getClass().getResourceAsStream("picturse\\truck.png"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            this.addAnimal(event, image, GamePage.stageOfGame);
+        }
+    }
 }
