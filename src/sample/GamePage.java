@@ -628,5 +628,45 @@ public class GamePage {
                 renew();
             }
     }
-
+    public void warHouse(MouseEvent event){
+            if(!GamePage.state)try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("warhouse.fxml"));
+                root = loader.load();
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                Controller.logger("WARNING","menu game bar .");
+                ControllGame controllGame = loader.getController();
+                controllGame.gamePage=this;
+                controllGame.min=GamePage.min;
+                controllGame.sec=GamePage.sec;
+                controllGame.state=GamePage.state;
+                controllGame.timer=GamePage.timer;
+                controllGame.loadAllWareHouse();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
+    public void truckPage(MouseEvent event){
+            if(!GamePage.state)try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("truckpage.fxml"));
+                root = loader.load();
+                System.out.println("ok");
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                Controller.logger("WARNING","menu game bar .");
+                ControllGame controllGame = loader.getController();
+                controllGame.gamePage=this;
+                controllGame.min=GamePage.min;
+                controllGame.sec=GamePage.sec;
+                controllGame.state=GamePage.state;
+                controllGame.timer=GamePage.timer;
+                controllGame.loadTruck();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
 }

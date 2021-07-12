@@ -12,6 +12,9 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import menus.Logger;
+import model.goods.Goods;
+import model.goods.GoodsEnum;
+import view.InputProcessor;
 import view.Timing;
 
 import javax.swing.text.html.ImageView;
@@ -27,7 +30,7 @@ public class ControllGame {
         public static int sec,min;
         public static boolean state;
         public static Timer timer = new Timer();
-
+        public InputProcessor inputProcessor=new InputProcessor(Controller.mainController);
         @FXML
         private Label massageUser;
         private Stage stage;
@@ -55,6 +58,31 @@ public class ControllGame {
         private Button l;
         @FXML
         private Button m;
+        @FXML
+        private Label egglable;
+        @FXML
+        private Label flourlable;
+        @FXML
+        private Label milklable;
+        @FXML
+        private Label bakerylable;
+        @FXML
+        private Label seperatedmilk;
+        @FXML
+        private Label silk;
+        @FXML
+        private Label cloth;
+        @FXML
+        private Label icecream;
+        @FXML
+        private Label beardoll;
+        @FXML
+        private Label liondoll;
+        @FXML
+        private Label tigerdoll;
+        @FXML
+        private Label feather;
+
         GamePage gamePage =new GamePage();
 
         public void setUsernameLable(){
@@ -151,7 +179,148 @@ public class ControllGame {
                 }
 
         }
+        public void loadAllWareHouse(){
+                egglable.setText(Integer.toString(Controller.mainController.gadgets.warehouse.eggInWareHouse.size()));
+                feather.setText(Integer.toString(Controller.mainController.gadgets.warehouse.featherInWareHouse.size()));
+                flourlable.setText(Integer.toString(Controller.mainController.gadgets.warehouse.flourInWareHouse.size()));
+                milklable.setText(Integer.toString(Controller.mainController.gadgets.warehouse.milkInWareHouse.size()));
+                seperatedmilk.setText(Integer.toString(Controller.mainController.gadgets.warehouse.sepratedMilkInWareHouse.size()));
+                bakerylable.setText(Integer.toString(Controller.mainController.gadgets.warehouse.cookieInWareHouse.size()));
+                icecream.setText(Integer.toString(Controller.mainController.gadgets.warehouse.iceCreamInWareHouse.size()));
+                silk.setText(Integer.toString(Controller.mainController.gadgets.warehouse.silkInWareHouse.size()));
+                cloth.setText(Integer.toString(Controller.mainController.gadgets.warehouse.clothInWareHouse.size()));
+                tigerdoll.setText(Integer.toString(Controller.mainController.gadgets.warehouse.tigerDollInWareHouse.size()));
+                liondoll.setText(Integer.toString(Controller.mainController.gadgets.warehouse.lionDollInWareHouse.size()));
+                beardoll.setText(Integer.toString(Controller.mainController.gadgets.warehouse.bearDollInWareHouse.size()));
 
+        }
+
+
+
+
+        public String inTruck(String name){
+                int size=0;
+                for (Goods truckgood : Controller.mainController.gadgets.truckgoods) {
+                        if(truckgood.name.equalsIgnoreCase(name))size++;
+                }
+                return Integer.toString(size);
+        }
+        public void loadTruck(){
+                egglable.setText(inTruck(GoodsEnum.EGG.toString()));
+                bakerylable.setText(inTruck(GoodsEnum.COOKIE.toString()));
+                flourlable.setText(inTruck(GoodsEnum.FLOUR.toString()));
+                milklable.setText(inTruck(GoodsEnum.MILK.toString()));
+                seperatedmilk.setText(inTruck(GoodsEnum.SEPARATEDMILK.toString()));
+                liondoll.setText(inTruck(GoodsEnum.LIONDOLL.toString()));
+                beardoll.setText(inTruck(GoodsEnum.BEARDOLL.toString()));
+                tigerdoll.setText(inTruck(GoodsEnum.TIGERDOLL.toString()));
+                feather.setText(inTruck(GoodsEnum.FEATHER.toString()));
+                silk.setText(inTruck(GoodsEnum.SILK.toString()));
+                cloth.setText(inTruck(GoodsEnum.CLOTH.toString()));
+                icecream.setText(inTruck(GoodsEnum.ICECREAM.toString()));
+        }
+        public void loadEgg(){
+                inputProcessor.truckLoad("EGG");
+                loadAllWareHouse();
+        }
+        public void loadFeather(){
+                inputProcessor.truckLoad("FEATHER");
+                loadAllWareHouse();
+        }
+        public void loadFlour(){
+                inputProcessor.truckLoad("FLOUR");
+                loadAllWareHouse();
+        }
+        public void loadMilk(){
+                inputProcessor.truckLoad("MILK");
+                loadAllWareHouse();
+        }
+        public void loadSeparated(){
+                inputProcessor.truckLoad("SEPARATEDMILK");
+                loadAllWareHouse();
+        }
+        public void loadBakery(){
+                inputProcessor.truckLoad("COOKIE");
+                loadAllWareHouse();
+        }
+        public void loadIceCream(){
+                inputProcessor.truckLoad("ICECREAM");
+                loadAllWareHouse();
+        }
+        public void loadSilk(){
+                inputProcessor.truckLoad("SILK");
+                loadAllWareHouse();
+        }
+        public void loadCloth(){
+                inputProcessor.truckLoad("CLOTH");
+                loadAllWareHouse();
+        }
+        public void loadBear(){
+                inputProcessor.truckLoad("BEARDOLL");
+                loadAllWareHouse();
+        }
+        public void loadLion(){
+                inputProcessor.truckLoad("LIONDOLL");
+                loadAllWareHouse();
+        }
+        public void loadTiger(){
+                inputProcessor.truckLoad("TIGERDOLL");
+                loadAllWareHouse();
+        }
+
+        public void unloadEgg(){
+                inputProcessor.processTruckUnload("EGG");
+                loadTruck();
+        }
+        public void unloadFeather(){
+                inputProcessor.processTruckUnload("FEATHER");
+                loadTruck();
+        }
+        public void unloadFlour(){
+                inputProcessor.processTruckUnload("FLOUR");
+                loadTruck();
+        }
+        public void unloadMilk(){
+                inputProcessor.processTruckUnload("MILK");
+                loadTruck();
+        }
+        public void unloadSeparated(){
+                inputProcessor.processTruckUnload("SEPARATEDMILK");
+                loadTruck();
+        }
+        public void unloadBakery(){
+                inputProcessor.processTruckUnload("COOKIE");
+                loadTruck();
+        }
+        public void unloadIceCream(){
+                inputProcessor.processTruckUnload("ICECREAM");
+                loadTruck();
+        }
+        public void unloadSilk(){
+                inputProcessor.processTruckUnload("SILK");
+                loadTruck();
+        }
+        public void unloadCloth(){
+                inputProcessor.processTruckUnload("CLOTH");
+                loadTruck();
+        }
+        public void unloadBear(){
+                inputProcessor.processTruckUnload("BEARDOLL");
+                loadTruck();
+        }
+        public void unloadLion(){
+                inputProcessor.processTruckUnload("LIONDOLL");
+                loadTruck();
+        }
+        public void unloadTiger(){
+                inputProcessor.processTruckUnload("TIGERDOLL");
+                loadTruck();
+        }
+
+        public  void truckGo(){
+                inputProcessor.truckGo();
+                this.loadTruck();
+        }
         public void resumeLastGame(ActionEvent event){
         Controller.logger("WARNING","RESUME GAME .");
         this.switchingGamePage(event);

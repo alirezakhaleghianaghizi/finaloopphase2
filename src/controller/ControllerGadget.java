@@ -13,7 +13,7 @@ public class ControllerGadget {
     public Truck truck;
     public Well well;
     public Warehouse warehouse;
-    ArrayList<Goods> truckgoods;
+    public ArrayList<Goods> truckgoods;
 
     public ControllerGadget() {
         this.truck = new Truck(7,7 );

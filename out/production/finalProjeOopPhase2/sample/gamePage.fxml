@@ -27,18 +27,18 @@
       <Button layoutX="250.0" layoutY="40.0" mnemonicParsing="false" onAction="#buyCat" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: gold;" text="150" />
       <Button layoutX="187.0" layoutY="40.0" mnemonicParsing="false" onAction="#buyDog" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: gold;" text="100" />
       <Button layoutX="124.0" layoutY="40.0" mnemonicParsing="false" onAction="#buyBuffalo" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: gold;" text="400" />
+      <ImageView fx:id="truck" fitHeight="90.0" fitWidth="109.0" layoutX="119.0" layoutY="494.0" onMouseClicked="#truckPage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/truck.png" />
+         </image>
+      </ImageView>
       <ImageView fx:id="weel" fitHeight="71.0" fitWidth="91.0" layoutX="346.0" layoutY="53.0" onMousePressed="#weel" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@picturse/weel.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="truck" fitHeight="90.0" fitWidth="109.0" layoutX="119.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@picturse/truck.png" />
-         </image>
-      </ImageView>
       <Label layoutX="32.0" layoutY="224.0" text="Label" textFill="#7fd65e" />
-      <ImageView fx:id="warhouse" fitHeight="90.0" fitWidth="147.0" layoutX="269.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="warhouse" fitHeight="90.0" fitWidth="147.0" layoutX="269.0" layoutY="494.0" onMousePressed="#warHouse" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@picturse/warhouse.png" />
          </image>

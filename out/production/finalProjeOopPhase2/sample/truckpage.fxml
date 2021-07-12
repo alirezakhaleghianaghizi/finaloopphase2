@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="574.0" prefWidth="252.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllGame">
+   <children>
+      <ImageView fitHeight="587.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/truckAndWarhouse.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="137.0" layoutY="528.0" mnemonicParsing="false" onAction="#resumeLastGame" prefHeight="30.0" prefWidth="126.0" style="-fx-background-color: #d1ff00;" text="resume" textFill="RED">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="177.0" layoutY="104.0" mnemonicParsing="false" onAction="#unloadEgg" prefHeight="25.0" prefWidth="73.0" text="Button" />
+      <Button layoutX="177.0" layoutY="137.0" mnemonicParsing="false" onAction="#unloadFlour" prefHeight="25.0" prefWidth="73.0" text="Button" />
+      <Button layoutX="177.0" layoutY="167.0" mnemonicParsing="false" onAction="#unloadMilk" prefHeight="25.0" prefWidth="73.0" text="Button" />
+      <Button layoutX="177.0" layoutY="200.0" mnemonicParsing="false" onAction="#unloadBakery" prefHeight="25.0" prefWidth="73.0" text="Button" />
+      <Button layoutX="177.0" layoutY="233.0" mnemonicParsing="false" onAction="#unloadSeparated" prefHeight="25.0" prefWidth="73.0" text="Button" />
+      <Button layoutX="177.0" layoutY="265.0" mnemonicParsing="false" onAction="#unloadSilk" prefHeight="25.0" prefWidth="73.0" text="Button" />
+      <Button layoutX="177.0" layoutY="294.0" mnemonicParsing="false" onAction="#unloadCloth" prefHeight="25.0" prefWidth="73.0" text="Button" />
+      <Button layoutX="177.0" layoutY="328.0" mnemonicParsing="false" onAction="#unloadIceCream" prefHeight="25.0" prefWidth="73.0" text="Button" />
+      <Label fx:id="egglable" layoutX="103.0" layoutY="108.0" text="Label" />
+      <Label fx:id="cloth" layoutX="103.0" layoutY="298.0" text="Label" />
+      <Label fx:id="silk" layoutX="103.0" layoutY="269.0" text="Label" />
+      <Label fx:id="seperatedmilk" layoutX="103.0" layoutY="237.0" text="Label" />
+      <Label fx:id="bakerylable" layoutX="103.0" layoutY="204.0" text="Label" />
+      <Label fx:id="milklable" layoutX="103.0" layoutY="171.0" prefHeight="17.0" prefWidth="28.0" text="Label" />
+      <Label fx:id="flourlable" layoutX="103.0" layoutY="141.0" text="Label" />
+      <Label fx:id="icecream" layoutX="103.0" layoutY="332.0" text="Label" />
+      <Button layoutX="177.0" layoutY="361.0" mnemonicParsing="false" onAction="#unloadBear" prefHeight="25.0" prefWidth="73.0" text="Button" />
+      <Button layoutX="177.0" layoutY="393.0" mnemonicParsing="false" onAction="#unloadLion" prefHeight="25.0" prefWidth="73.0" text="Button" />
+      <Button layoutX="177.0" layoutY="422.0" mnemonicParsing="false" onAction="#unloadTiger" prefHeight="25.0" prefWidth="73.0" text="Button" />
+      <Button layoutX="177.0" layoutY="456.0" mnemonicParsing="false" onAction="#unloadFeather" prefHeight="25.0" prefWidth="73.0" text="Button" />
+      <Label fx:id="tigerdoll" layoutX="103.0" layoutY="426.0" text="Label" />
+      <Label fx:id="liondoll" layoutX="103.0" layoutY="397.0" text="Label" />
+      <Label fx:id="beardoll" layoutX="103.0" layoutY="365.0" text="Label" />
+      <Label fx:id="feather" layoutX="103.0" layoutY="460.0" text="Label" />
+      <ImageView fitHeight="34.0" fitWidth="22.0" layoutX="46.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/egg.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="34.0" fitWidth="28.0" layoutX="44.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/flour.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="132.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="32.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="30.0" fitWidth="22.0" layoutX="48.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/milk.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="33.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/silk.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="36.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/cloth.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="35.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="34.0" fitWidth="43.0" layoutX="47.0" layoutY="357.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/bear.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="43.0" fitWidth="28.0" layoutX="44.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/lion.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="36.0" fitWidth="21.0" layoutX="47.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/tiger.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="51.0" fitWidth="43.0" layoutX="36.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+         <image>
+            <Image url="@picturse/FEATHER.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="-5.0" layoutY="528.0" mnemonicParsing="false" onAction="#truckGo" prefHeight="51.0" prefWidth="135.0" style="-fx-background-color: #d1ff00;" text="truckGo" textFill="RED">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
