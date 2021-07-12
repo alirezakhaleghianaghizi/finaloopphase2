@@ -77,42 +77,42 @@ public class InputProcessor {
         switch (workShopName.toUpperCase()) {
             case "EGGPOWDER":
                 if (this.situationOfOpeningWorkShop(mainController.factories.eggPowderFactories,FactoryMoney.EGGPOWDER)==1) {
-                    this.mainController.factories.eggPowderFactories=new EggPowder(0,1);
+                    this.mainController.factories.eggPowderFactories=new EggPowder(20,150);
                     return true;
                 }
                 return false;
             case "COOKIEFACTORY":
                 if (this.situationOfOpeningWorkShop(mainController.factories.cookieBakeryFactories ,FactoryMoney.COOKIEBAKERY)== 1) {
-                    mainController.factories.cookieBakeryFactories = new CookieBakery(0, 3);
+                    mainController.factories.cookieBakeryFactories = new CookieBakery(20, 276);
                     return true;
                 }
                 return false;
             case "MILKSEPRATOR":
                 if (this.situationOfOpeningWorkShop(mainController.factories.milkSepratorFactories,FactoryMoney.MILKSEPERATOR) ==1) {
-                    mainController.factories.milkSepratorFactories = new MilkSeprator(0, 5);
+                    mainController.factories.milkSepratorFactories = new MilkSeprator(20, 397);
                      return true;
                 }
                 return false;
             case "ICECRAEMFACTORY":
                 if ( this.situationOfOpeningWorkShop(mainController.factories.iceCreamFactories,FactoryMoney.ICECREAMFACTORY)== 1) {
-                    mainController.factories.iceCreamFactories = new IceCreamFactory(7, 1);
+                    mainController.factories.iceCreamFactories = new IceCreamFactory(620, 150);
                     return true;
                 }
                 return false;
             case "SPINNERY":
                 if (this.situationOfOpeningWorkShop(mainController.factories.spinneryFactories,FactoryMoney.SPINNERY)==1) {
-                    mainController.factories.spinneryFactories = new Spinnery(7, 3);
+                    mainController.factories.spinneryFactories = new Spinnery(620, 286);
                     return true;
                 }
                 return false;
             case "WEAVING":
                 if (this.situationOfOpeningWorkShop(mainController.factories.weavingFactories,FactoryMoney.WEAVING)==1) {
-                    mainController.factories.weavingFactories = new Weaving(7, 5);
+                    mainController.factories.weavingFactories = new Weaving(618, 393);
                     return true;
                 }
             case "CHICKENERRY":
                 if (this.situationOfOpeningWorkShop(mainController.factories.chickenerryFactory,FactoryMoney.CHICKENERRY)==1) {
-                    mainController.factories.chickenerryFactory = new Chickenerry(7, 7);
+                    mainController.factories.chickenerryFactory = new Chickenerry(501, 510);
                     return true;
                 }
                 return false;
@@ -159,18 +159,12 @@ public class InputProcessor {
     }
 
     public boolean processPickUp(double x, double y){
-        if(x>6|x<0|y<0|y>6){
-            this.mainController.logger.commands.add("ERROR,"+this.mainController.logger.lastChange.toString()+",OUT OF SURFACE SPOT IN PICKUP+.");
-            System.err.println("the spot you choose is not in the surface");
-            return false;
-        }else {
             if (mainController.goods.pickUp(x, y, mainController.gadgets, this.mainController.logger)) {
                 System.out.println("to the WareHouse ...");
                 // mainController.goods.productGoods.remove();
                 return true;
             }
             return false;
-        }
     }
 
     public boolean plant(double x,double y){

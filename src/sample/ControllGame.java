@@ -112,6 +112,7 @@ public class ControllGame {
                         ControllGame.sec=0;
                         ControllGame.state=false;
                         ControllGame.timer=new Timer();
+                        GamePage.animals=new HashMap<>();
                         switchingGamePage(event);
                 }
                 else{
@@ -128,8 +129,6 @@ public class ControllGame {
                 try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("gamePage.fxml"));
                         AnchorPane root1 = (AnchorPane)loader.load();
-
-                        //root = loader.load();
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         scene = new Scene(root1);
                         Controller.logger("WARNING","GAME PAGE .");
@@ -139,8 +138,13 @@ public class ControllGame {
                         gamePage.state=ControllGame.state;
                         gamePage.timer=ControllGame.timer;
                         gamePage.renew();
+                        gamePage.showingAnimal(stage);
+                        gamePage.showingGood(stage);
+                        gamePage.reloadFactory();
+                        Controller.mainController.personsController.CurrentUser.totalCoins=100000;
                         stage.setScene(scene);
                         stage.show();
+                        gamePage.showingAnimal(stage);
                 }
                 catch (Exception e){
                         e.printStackTrace();
