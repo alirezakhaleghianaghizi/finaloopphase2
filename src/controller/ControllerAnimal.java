@@ -23,14 +23,14 @@ import java.util.HashMap;
 
 public class ControllerAnimal {
 
-    ArrayList<Tiger> tigers = new ArrayList<>();
-    ArrayList<Bear> bears = new ArrayList<>();
-    ArrayList<Lion> lions = new ArrayList<>();
-    ArrayList<Dog> dogs = new ArrayList<>();
-    ArrayList<Cat> cats = new ArrayList<>();
-    ArrayList<Chicken> chickens = new ArrayList<>();
-    ArrayList<Bufallo> bufallos= new ArrayList<>();
-    ArrayList<Turkey> turkeys  = new ArrayList<>();
+    public ArrayList<Tiger> tigers = new ArrayList<>();
+    public ArrayList<Bear> bears = new ArrayList<>();
+    public ArrayList<Lion> lions = new ArrayList<>();
+    public ArrayList<Dog> dogs = new ArrayList<>();
+    public ArrayList<Cat> cats = new ArrayList<>();
+    public ArrayList<Chicken> chickens = new ArrayList<>();
+    public ArrayList<Bufallo> bufallos= new ArrayList<>();
+    public ArrayList<Turkey> turkeys  = new ArrayList<>();
 
     public int buyAnimal(String name, Person person){
         switch (name){

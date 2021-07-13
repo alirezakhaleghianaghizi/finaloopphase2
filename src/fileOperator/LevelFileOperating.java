@@ -36,6 +36,7 @@ public class LevelFileOperating {
         String output="";
         try {
             Scanner scanner =new Scanner(file);
+
             while (scanner.hasNextLine()){
                 output+=scanner.nextLine();
             }
@@ -43,22 +44,20 @@ public class LevelFileOperating {
 
             e.printStackTrace();
         }
+
         GsonBuilder builder=new GsonBuilder().setPrettyPrinting();
         Gson gson = builder.create();
         allLevels=gson.fromJson(output, AllLevels.class);
+        System.out.println("ok");
         return allLevels;
     }
     public AllLevels reloadLevels (AllLevels allLevels){
         try{
-            if(allLevels.numberOfLevels==0){
                 return this.readFile(allLevels);
-            }
-            else{
-                return allLevels;
-            }
         }
         catch (Exception e){
             System.out.println("File Mission Damaged");
+            e.printStackTrace();
         }
         return new AllLevels();
     }

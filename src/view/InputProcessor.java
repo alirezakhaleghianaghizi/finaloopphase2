@@ -168,11 +168,6 @@ public class InputProcessor {
     }
 
     public boolean plant(double x,double y){
-        if(x>6|x<0|y<0|y>6){
-            this.mainController.logger.commands.add("ERROR,"+this.mainController.logger.lastChange.toString()+",OUT OF SURFACE SPOT IN PLANT+.");
-            System.err.println("the spot you choose is not in the surface");
-            return false;
-        }
         int situation=mainController.goods.plant(x,y, mainController.factories, mainController.gadgets);
         if(situation==2){
             this.mainController.logger.commands.add("INFO,"+this.mainController.logger.lastChange.toString()+",plant in x : "+x+" ,y : "+y+".");
@@ -285,11 +280,6 @@ public class InputProcessor {
 
     public boolean cage(double x,double y){
         System.out.println("cage x : "+x+"\n y : "+y);
-        if(x>6|x<0|y<0|y>6){
-            this.mainController.logger.commands.add("ERROR ,"+this.mainController.logger.lastChange.toString()+", out surface spot to cage ");
-            System.err.println("the spot you choose is not in the surface");
-            return false;
-        }
         int situation=mainController.animals.cage(x,y, mainController.goods, mainController.logger);
         if(situation==1){
             System.out.println("wild animal caged and send to warehouse");

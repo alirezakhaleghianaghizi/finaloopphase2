@@ -57,6 +57,7 @@ public class MyFirstJDBC {
                 person.level=Integer.parseInt(resultset.getString("max_pass_level"));
                 person.coins=Integer.parseInt(resultset.getString("coins"));
                 person.totalCoins=Integer.parseInt(resultset.getString("total_coins"));
+                this.controller.allLevels=this.controller.allLevels.FILE.reloadLevels(this.controller.allLevels);
                 person.currentLevel=this.controller.allLevels.levels.get(Integer.parseInt(resultset.getString("current_level")));
                 this.controller.personsController.CurrentUser=person;
                 this.controller.personsController.isAnyOneInTheGame=true;

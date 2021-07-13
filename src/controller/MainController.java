@@ -287,7 +287,7 @@ public class MainController {
     public boolean movingProducerAnimal(producerAnimal animal) {
         double path;
         double xDest = animal.x, yDest = animal.y;
-        double minPath = 36;
+        double minPath = 99999999;
         for (Grass grass : goods.grasses) {
             path = Math.abs(animal.x - grass.x) + Math.abs(animal.y - grass.y);
             if (path < minPath) {
@@ -304,32 +304,32 @@ public class MainController {
             return false;
         } else if (animal.x == xDest) {
             if (animal.y > yDest) {
-                animal.y--;
+                animal.y-=10;
             } else {
-                animal.y++;
+                animal.y+=10;
                 return true;
             }
         } else if (animal.y == yDest) {
             if (animal.x > xDest) {
-                animal.x--;
+                animal.x-=10;
             } else {
-                animal.x++;
+                animal.x+=10;
                 return true;
             }
         } else {
             if (Math.abs(animal.x - xDest) > Math.abs(animal.y - yDest)) {
                 if (animal.x > xDest) {
-                    animal.x--;
+                    animal.x-=10;
                 } else {
-                    animal.x++;
+                    animal.x+=10;
                     return true;
                 }
             } else {
                 if (animal.y > yDest) {
-                    animal.y--;
+                    animal.y-=10;
                     return true;
                 } else {
-                    animal.y++;
+                    animal.y+=10;
                     return true;
                 }
             }
@@ -340,7 +340,7 @@ public class MainController {
     public boolean movingCatAnimal(Animal animal){
         double path;
         double xDest = 0, yDest = 0;
-        double minPath = 20;
+        double minPath = 9999999;
         for (Goods productGood : goods.productGoods) {
             path = Math.abs(animal.x - productGood.x) + Math.abs(animal.y - productGood.y);
             if (path < minPath) {
@@ -355,7 +355,7 @@ public class MainController {
     public void movingDog(Dog dog){
         double path;
         double xDest= dog.x , yDest= dog.y;
-        double minPath=36;
+        double minPath=9999999;
         for (Lion lion : animals.lions) {
             path=Math.abs(dog.x- lion.x)+Math.abs(dog.y-lion.y);
             if(path<minPath){
@@ -427,9 +427,9 @@ public class MainController {
     }
 
         //Eating methods :
-    public boolean eat(producerAnimal animal){
-        for (Grass grass : goods.grasses) {
-            if(grass.x==animal.x&&grass.y==animal.y&&!animal.isFull&&animal.produce==null){
+    public boolean eat(producerAnimal animal,Grass grass){
+       {
+            if(!animal.isFull&&animal.produce==null){
                 animal.livies=110;
                 animal.isFull=true;
                 animal.produce=new Timing();
@@ -445,8 +445,10 @@ public class MainController {
         for (int i = 0; i < this.goods.grasses.size(); i++) {
             producerAnimal producer;
             if(( producer=   this.findMostHungry(this.goods.grasses.get(i)))!=null){
-                if(eat(producer)) i--;
+                System.out.println("chicken not null");
+                if(eat(producer,this.goods.grasses.get(i))) i--;
                 if(producer.isFull){
+                    System.out.println("chicken is full");
                     if(producer.produce==null) producer.produce = new Timing();
                 }
             }
@@ -456,17 +458,18 @@ public class MainController {
     public  producerAnimal findMostHungry(Grass grass){
         ArrayList<producerAnimal> hungries = new ArrayList<>();
             for (Chicken chicken : animals.chickens) {
-                if(grass.x== chicken.x&&grass.y== chicken.y){
+                if((grass.x<= chicken.x+80||grass.x>= chicken.x-80)&&(grass.y<= chicken.y+80||grass.y>= chicken.y-80)){
                     hungries.add(chicken);
+                    System.out.println("chicken");
                 }
             }
             for (Turkey turkey : animals.turkeys) {
-                if(grass.x== turkey.x&&grass.y==turkey.y){
+                if((grass.x<= turkey.x+80||grass.x>= turkey.x-80)&&(grass.y<= turkey.y+80||grass.y>= turkey.y-80)){
                     hungries.add(turkey);
                 }
             }
             for (Bufallo bufallo : animals.bufallos) {
-                if(grass.x== bufallo.x&&grass.y== bufallo.y){
+                if((grass.x<= bufallo.x+80||grass.x>= bufallo.x-80)&&(grass.y<= bufallo.y+80||grass.y>= bufallo.y-80)){
                     hungries.add(bufallo);
                 }
             }
@@ -496,8 +499,11 @@ public class MainController {
             for (Bufallo bufallo1 : animals.bufallos) {
                 if(bufallo.equals(bufallo1)) bool=true;
             }
-            if(bool)
-            animals.bufallos.remove(bufallo);
+            if(bool){
+                animals.bufallos.remove(bufallo);
+                //bufallo.imageView.setVisible(false);
+            }
+
         }
         index1.clear();
         ArrayList<Chicken> index  = new ArrayList<>();
@@ -512,8 +518,11 @@ public class MainController {
             for (Chicken chicken1 : animals.chickens) {
                 if(chicken.equals(chicken1)) bool = true;
             }
-            if(bool)
-            animals.chickens.remove(chicken);
+            if(bool){
+                animals.chickens.remove(chicken);
+               // chicken.imageView.setVisible(false);
+            }
+
         }
         index.clear();
         ArrayList<Turkey> index2 = new ArrayList<>();
@@ -527,7 +536,10 @@ public class MainController {
             for (Turkey turkey1 : animals.turkeys) {
                 if(turkey.equals(turkey1)) bool = true;
             }
-            if(bool) animals.turkeys.remove(turkey);
+            if(bool) {
+                animals.turkeys.remove(turkey);
+                //turkey.imageView.setVisible(false);
+            }
         }
         index2.clear();
     }
@@ -539,7 +551,7 @@ public class MainController {
         boolean bool ;
         for (Lion lion : animals.lions) {
             for (Dog dog : animals.dogs) {
-                if(dog.x== lion.x&&dog.y== lion.y){
+                if((dog.x<= lion.x+80||dog.x>= lion.x-80)&&(dog.y<= lion.y+80||dog.y>= lion.y-80)){
                     saveKilling.add(dog);
                     saveKilling.add(lion);
                 }
@@ -550,8 +562,11 @@ public class MainController {
                     if(dog==animal)
                         bool=true;
                 }
-                if(bool)
+                if(bool){
                     animals.dogs.remove(animal);
+                    //animal.imageView.setVisible(false);
+                }
+
             }
         }
         for (Animal animal : saveKilling) {
@@ -560,14 +575,17 @@ public class MainController {
                 if(lion==animal)
                     bool=true;
             }
-            if(bool)
+            if(bool){
+                //animal.imageView.setVisible(false);
                 animals.lions.remove(animal);
+            }
+
         }
         saveKilling.clear();
 
         for (Tiger tiger : animals.tigers) {
             for (Dog dog : animals.dogs) {
-                if(dog.x==tiger.x&&dog.y== tiger.y){
+                if((dog.x<= tiger.x+80||dog.x>= tiger.x-80)&&(dog.y<= tiger.y+80||dog.y>= tiger.y-80)){
                     saveKilling.add(dog);
                     saveKilling.add(tiger);
                 }
@@ -578,8 +596,11 @@ public class MainController {
                     if(dog==animal)
                         bool=true;
                 }
-                if(bool)
+                if(bool){
                     animals.dogs.remove(animal);
+                    //animal.imageView.setVisible(false);
+                }
+
             }
         }
         for (Animal animal : saveKilling) {
@@ -588,15 +609,18 @@ public class MainController {
                 if(tiger==animal);
                 bool=true;
             }
-            if(bool)
+            if(bool){
                 animals.tigers.remove(animal);
+                //animal.imageView.setVisible(false);
+            }
+
         }
         saveKilling.clear();
 
 
         for (Bear bear : animals.bears) {
             for (Dog dog : animals.dogs) {
-                if(dog.x== bear.x&&dog.y== bear.y){
+                if((dog.x<= bear.x+80||dog.x>= bear.x-80)&&(dog.y<= bear.y+80||dog.y>= bear.y-80)){
                     saveKilling.add(dog);
                     saveKilling.add(bear);
                 }
@@ -607,7 +631,10 @@ public class MainController {
                     if(dog==animal)
                         bool=true;
                 }
-                animals.dogs.remove(animal);
+                if(bool){
+                    animals.dogs.remove(animal);
+                    //animal.imageView.setVisible(false);
+                }
             }
         }
         for (Animal animal : saveKilling) {
@@ -616,7 +643,11 @@ public class MainController {
                 if(animal==bear);
                 bool=true;
             }
-            animals.bears.remove(animal);
+            if(bool){
+                animals.bears.remove(animal);
+                //animal.imageView.setVisible(false);
+            }
+
         }
     }
 
@@ -626,43 +657,43 @@ public class MainController {
         boolean bool ;
         for (Lion lion : animals.lions) {
             for (Chicken chicken : animals.chickens) {
-                if(chicken.x==lion.x&&chicken.y== lion.y)
+                if((chicken.x<= lion.x+80||chicken.x>= lion.x-80)&&(chicken.y<= lion.y+80||chicken.y>= lion.y-80))
                     saveDeath.add(chicken);
             }
             for (Turkey turkey : animals.turkeys) {
-                if(turkey.x== lion.x&&turkey.y== lion.y)
+                if((turkey.x<= lion.x+80||turkey.x>= lion.x-80)&&(turkey.y<= lion.y+80||turkey.y>= lion.y-80))
                     saveDeath.add(turkey);
             }
             for (Bufallo bufallo : animals.bufallos) {
-                if(bufallo.x== lion.x&&bufallo.y== lion.y)
+                if((bufallo.x<= lion.x+80||bufallo.x>= lion.x-80)&&(bufallo.y<= lion.y+80||bufallo.y>= lion.y-80))
                     saveDeath.add(bufallo);
             }
         }
         for (Tiger tiger : animals.tigers) {
             for (Chicken chicken : animals.chickens) {
-                if(chicken.x==tiger.x&&chicken.y== tiger.y)
+                if((chicken.x<= tiger.x+80||chicken.x>= tiger.x-80)&&(chicken.y<= tiger.y+80||chicken.y>= tiger.y-80))
                     saveDeath.add(chicken);
             }
             for (Turkey turkey : animals.turkeys) {
-                if(turkey.x== tiger.x&&turkey.y== tiger.y)
+                if((turkey.x<= tiger.x+80||turkey.x>= tiger.x-80)&&(turkey.y<= tiger.y+80||turkey.y>= tiger.y-80))
                     saveDeath.add(turkey);
             }
             for (Bufallo bufallo : animals.bufallos) {
-                if(bufallo.x== tiger.x&&bufallo.y== tiger.y)
+                if((bufallo.x<= tiger.x+80||bufallo.x>= tiger.x-80)&&(bufallo.y<= tiger.y+80||bufallo.y>= tiger.y-80))
                     saveDeath.add(bufallo);
             }
         }
         for (Bear bear : animals.bears) {
             for (Chicken chicken : animals.chickens) {
-                if(chicken.x==bear.x&&chicken.y== bear.y)
+                if((chicken.x<= bear.x+80||chicken.x>= bear.x-80)&&(chicken.y<= bear.y+80||chicken.y>= bear.y-80))
                     saveDeath.add(chicken);
             }
             for (Turkey turkey : animals.turkeys) {
-                if(turkey.x== bear.x&&turkey.y== bear.y)
+                if((turkey.x<= bear.x+80||turkey.x>= bear.x-80)&&(turkey.y<= bear.y+80||turkey.y>= bear.y-80))
                     saveDeath.add(turkey);
             }
             for (Bufallo bufallo : animals.bufallos) {
-                if(bufallo.x== bear.x&&bufallo.y== bear.y)
+                if((bufallo.x<= bear.x+80||bufallo.x>= bear.x-80)&&(bufallo.y<= bear.y+80||bufallo.y>= bear.y-80))
                     saveDeath.add(bufallo);
             }
         }
@@ -672,22 +703,31 @@ public class MainController {
                 if(chicken==producerAnimal)
                     bool=true;
             }
-            if(bool)
+            if(bool){
                 animals.chickens.remove(producerAnimal);
+                //producerAnimal.imageView.setVisible(false);
+            }
+
             bool=false;
             for (Turkey turkey : animals.turkeys) {
                 if(turkey==producerAnimal)
                     bool=true;
             }
-            if(bool)
+            if(bool){
                 animals.turkeys.remove(producerAnimal);
+               // producerAnimal.imageView.setVisible(false);
+            }
+
             bool=false;
             for (Bufallo bufallo : animals.bufallos) {
                 if(bufallo==producerAnimal)
                     bool=true;
             }
-            if(bool)
+            if(bool){
                 animals.bufallos.remove(producerAnimal);
+               // producerAnimal.imageView.setVisible(false);
+            }
+
         }
         //Attack Goods :
         for (int i = 0; i < goods.productGoods.size(); i++) {

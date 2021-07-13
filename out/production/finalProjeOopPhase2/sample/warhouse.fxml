@@ -53,8 +53,11 @@
             <Image url="@picturse/flour.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="132.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="32.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="43.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/cookie.png" />
+         </image></ImageView>
+      <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="82.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="30.0" fitWidth="22.0" layoutX="48.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@picturse/milk.png" />
@@ -70,7 +73,10 @@
             <Image url="@picturse/cloth.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="35.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="43.0" fitWidth="30.0" layoutX="43.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/seprated%20milk%20.png" />
+         </image></ImageView>
       <ImageView fitHeight="34.0" fitWidth="43.0" layoutX="47.0" layoutY="357.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@picturse/bear.png" />

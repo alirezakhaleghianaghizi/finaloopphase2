@@ -12,7 +12,7 @@ public class ControllerGoods {
         ArrayList<Egg> eggs;
         ArrayList<Feather> feathers;
         ArrayList<Flour> flours;
-        ArrayList<Grass> grasses;
+        public ArrayList<Grass> grasses;
         ArrayList<IceCream> iceCreams;
         ArrayList<Milk> milks;
         ArrayList<SepratedMilk> sepratedMilks;

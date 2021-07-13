@@ -141,6 +141,7 @@ public class ControllGame {
                         ControllGame.state=false;
                         ControllGame.timer=new Timer();
                         GamePage.animals=new HashMap<>();
+                        gamePage.setWildeAnimal(event);
                         switchingGamePage(event);
                 }
                 else{
@@ -167,6 +168,7 @@ public class ControllGame {
                         gamePage.timer=ControllGame.timer;
                         gamePage.renew();
                         gamePage.showingAnimal(stage);
+                        gamePage.showingWildeAnimal(stage);
                         gamePage.showingGood(stage);
                         gamePage.reloadFactory();
                         Controller.mainController.personsController.CurrentUser.totalCoins=100000;

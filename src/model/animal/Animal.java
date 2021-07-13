@@ -1,4 +1,5 @@
 package model.animal;
+import javafx.scene.image.ImageView;
 import model.Model;
 import view.Timing;
 
@@ -10,10 +11,8 @@ public class Animal extends Model {
     public int livies ;
     public int cost;
     public int timeMovingPeriode;
-
-
     public Animal(String name, double x, double y, double footStep, int livies,int cost) {
-        super(name, x, y);
+        super(name, 300, 250);
         this.footStep = footStep;
         this.livies = livies;
         this.cost=cost;
@@ -25,22 +24,23 @@ public class Animal extends Model {
         int randSituation = random.nextInt(4);
         switch (randSituation){
             case 0:
-                if(this.x+footStep>=0&&this.x+footStep<=6) {
+                if(this.x+footStep>=120&&this.x+footStep<=600) {
                     //this.timeMovingPeriode=footStep/animal.footStep;
                     this.x += footStep;
                 }
+                else   this.x-=footStep;
                 break;
             case 1:
-                if(this.x-footStep>=0&&this.x-footStep<=6)
-                    this.x-=footStep;
+                if(this.x-footStep>=120&&this.x-footStep<=600) this.x-=footStep;
+                else   this.x+=footStep;
                 break;
             case 2:
-                if(this.y+footStep>=0&&this.y+footStep<=6)
-                    this.y+=footStep;
+                if(this.y+footStep>=140&&this.y+footStep<=490)this.y+=footStep;
+                else    this.y-=footStep;
                 break;
             case 3:
-                if(this.y-footStep>=0&&this.y-footStep<=6)
-                    this.y-=footStep;
+                if(this.y-footStep>=140&&this.y-footStep<=490) this.y-=footStep;
+                  else    this.y+=footStep;
                 break;
         }
     }

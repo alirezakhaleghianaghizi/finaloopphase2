@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="585.0" prefWidth="720.0" style="-fx-background-color: #7fd65e;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GamePage">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d09c4e" height="350.0" layoutX="120.0" layoutY="140.0" stroke="BLACK" strokeType="INSIDE" width="480.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d09c4e" height="350.0" layoutX="120.0" layoutY="140.0" onMouseMoved="#picturseNewing" onMousePressed="#plant" stroke="BLACK" strokeType="INSIDE" width="480.0" />
       <Button layoutX="14.0" layoutY="533.0" mnemonicParsing="false" onAction="#menu" prefHeight="37.0" prefWidth="63.0" style="-fx-background-color: red;" text="menu" textFill="WHITE">
          <font>
             <Font name="Poor Richard" size="17.0" />

@@ -1,6 +1,5 @@
 package sample;
 
-import controller.MainController;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.ScaleTransition;
@@ -11,7 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -27,9 +25,11 @@ import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import model.factory.FactoryMoney;
+import model.animal.Animal;
+import model.goods.Goods;
+import model.goods.GoodsEnum;
+import model.goods.Grass;
 import view.InputProcessor;
-import model.animal.AnimalEnum;
 
 public class GamePage {
 
@@ -74,6 +74,11 @@ public class GamePage {
     TextField timeText;
 @FXML
     Button puse;
+ActionEvent myActionEvent;
+
+    @FXML
+    private AnchorPane anchorPane;
+    public static boolean isWellWorking=false;
     public static int sec=0 ;
     public static int min=0;
     public static boolean state=false;
@@ -81,6 +86,8 @@ public class GamePage {
     public static HashMap<String,ArrayList<ImageView>> animals=new HashMap<>();
     public static HashMap<String,ArrayList<ImageView>> wildeAnimal=new HashMap<>();
     public static HashMap<String,ArrayList<ImageView>> goods=new HashMap<>();
+    public static HashMap<Animal,ImageView> animalImageViewHashMap=new HashMap<>();
+    public static HashMap<Grass,ImageView> grassImageViewHashMap=new HashMap<>();
     public InputProcessor inputProcessor=new InputProcessor(Controller.mainController);
 
     TimerTask task;
@@ -95,16 +102,111 @@ public class GamePage {
             }
         }
 
+
+        public void picturseNewing(MouseEvent event){
+            if(state){
+                pictureGoodNewing(event);
+                pictureAnimalNewing();
+                pictureWildeNewing();
+            }
+
+
+        }
+        public void goodsVisible(){
+        if(GamePage.goods.get("picturse\\egg.png")!=null)for (ImageView imageView : GamePage.goods.get("picturse\\egg.png")) imageView.setVisible(false);
+        if(GamePage.goods.get("picturse\\FEATHER.png")!=null)for (ImageView imageView : GamePage.goods.get("picturse\\FEATHER.png")) imageView.setVisible(false);
+        if(GamePage.goods.get("picturse\\flour.png")!=null)for (ImageView imageView : GamePage.goods.get("picturse\\flour.png")) imageView.setVisible(false);
+        if(GamePage.goods.get("picturse\\milk.png")!=null)for (ImageView imageView : GamePage.goods.get("picturse\\milk.png")) imageView.setVisible(false);
+        if(GamePage.goods.get("picturse\\silk.png")!=null)for (ImageView imageView : GamePage.goods.get("picturse\\silk.png")) imageView.setVisible(false);
+        if( GamePage.goods.get("picturse\\cookie.png")!=null)for (ImageView imageView : GamePage.goods.get("picturse\\cookie.png")) imageView.setVisible(false);
+        if( GamePage.goods.get("picturse\\liondoll.png")!=null)for (ImageView imageView : GamePage.goods.get("picturse\\liondoll.png")) imageView.setVisible(false);
+        if(GamePage.goods.get("picturse\\tigerdoll.png")!=null)for (ImageView imageView : GamePage.goods.get("picturse\\tigerdoll.png")) imageView.setVisible(false);
+        if(GamePage.goods.get("picturse\\beardoll.png")!=null)for (ImageView imageView : GamePage.goods.get("picturse\\beardoll.png")) imageView.setVisible(false);
+        if(GamePage.goods.get("picturse\\sepratedmilk.png")!=null)for (ImageView imageView : GamePage.goods.get("picturse\\sepratedmilk.png")) imageView.setVisible(false);
+        if( GamePage.goods.get("picturse\\cloth.png")!=null)for (ImageView imageView : GamePage.goods.get("picturse\\cloth.png")) imageView.setVisible(false);
+        // for (ImageView imageView : GamePage.goods.get()) imageView.setVisible(false);
+    }
+
+        public void pictureGoodNewing(MouseEvent event){
+            System.out.println(event.getX());
+            //Stage s=(Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene =  ((Node) event.getSource()).getScene();
+            System.out.println(event.getX());
+            root1= (AnchorPane) scene.getRoot();
+          this.goodsVisible();
+            for (Goods productGood : Controller.mainController.goods.productGoods) {
+                System.out.println("piv");
+                boolean isSet =false;
+                if(productGood.name.equalsIgnoreCase(GoodsEnum.BEARDOLL.toString())) this.GoodSetSingleImage("picturse\\beardoll.png",productGood,isSet,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.LIONDOLL.toString())) this.GoodSetSingleImage("picturse\\liondoll.png",productGood,isSet,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.TIGERDOLL.toString())) this.GoodSetSingleImage("picturse\\tigerdoll.png",productGood,isSet,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.CLOTH.toString())) this.GoodSetSingleImage("picturse\\cloth.png",productGood,isSet,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.COOKIE.toString())) this.GoodSetSingleImage("picturse\\cookie.png",productGood,isSet,root1);
+              else if(productGood.name.equalsIgnoreCase(GoodsEnum.ICECREAM.toString())) this.GoodSetSingleImage("picturse\\liondoll.png",productGood,isSet,root1);
+               else if(productGood.name.equalsIgnoreCase(GoodsEnum.MILK.toString())) this.GoodSetSingleImage("picturse\\milk.png",productGood,isSet,root1);
+               else if(productGood.name.equalsIgnoreCase(GoodsEnum.SEPARATEDMILK.toString())) this.GoodSetSingleImage("picturse\\sepratedmilk.png",productGood,isSet,root1);
+               else if(productGood.name.equalsIgnoreCase(GoodsEnum.SILK.toString())) this.GoodSetSingleImage("picturse\\silk.png",productGood,isSet,root1);
+             else if(productGood.name.equalsIgnoreCase(GoodsEnum.EGG.toString())) this.GoodSetSingleImage("picturse\\egg.png",productGood,isSet,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.FEATHER.toString())) this.GoodSetSingleImage("picturse\\FEATHER.png",productGood,isSet,root1);
+               else if(productGood.name.equalsIgnoreCase(GoodsEnum.FLOUR.toString())){ this.GoodSetSingleImage("picturse\\flour.png",productGood,isSet,root1); }
+            }
+
+            scene.setRoot(root1);
+            //stage.setScene(scene);
+            //stage.show();
+        }
+        public void GoodSetSingleImage(String url,Goods productGood,boolean isSet,AnchorPane Roo){
+            System.err.println("ok");
+            //for (int i = 0; i < GamePage.goods.get(url).size()&& !isSet; i++) {
+
+                //if(!GamePage.goods.get(url).get(i).isVisible()) {
+
+                    //System.out.println(GamePage.goods.get(url).get(i).isVisible());
+                   // GamePage.goods.get(url).get(i).setVisible(true);
+                   // GamePage.goods.get(url).get(i).setLayoutX(productGood.x+100);
+                   // GamePage.goods.get(url).get(i).setLayoutY(productGood.y+100);
+            Image image = new Image(getClass().getResourceAsStream(url));
+            ImageView imageView = new ImageView(image);
+            imageView.setX(productGood.x);
+            imageView.setY(productGood.y);
+            imageView.setFitHeight(50);
+            imageView.setFitWidth(50);
+                    System.out.println(productGood.y+100+"\t"+productGood.x+100);
+
+            imageView.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    if(inputProcessor.processPickUp(productGood.x, productGood.y)){
+                        System.out.println("picking");
+                        imageView.setVisible(false);
+                    }
+                }
+            });
+                    Roo.getChildren().add(imageView);
+
+                   // root1.getChildren().add(GamePage.goods.get(url).get(i));
+
+                   // GamePage.animalImageViewHashMap.get(Controller.mainController.animals.chickens.)
+                   // System.out.println(GamePage.goods.get(url).get(i).isVisible());
+                    isSet=true;
+               // }
+           // }
+        }
+        public void pictureAnimalNewing(){}
+
+        public void pictureWildeNewing(){}
+
     public void renew1() {
             task = new TimerTask() {
         @Override
         public void run() {
             try{
 
-              //  if(sec==3) addEgg();
+
                 GamePage.state=true;
                 GamePage.sec++;
-
+                inputProcessor.turn(1);
+                //picturseNewing();
                 if(GamePage.sec<60) {
                     if(GamePage.min<10){
                         if(GamePage.sec<10) timeText.setText(" 0"+GamePage.min+" : 0"+GamePage.sec);
@@ -168,6 +270,7 @@ public class GamePage {
 
 
     public  void start(ActionEvent event) {
+            myActionEvent=event;
             GamePage.timer=new Timer();
             this.renew1();
             GamePage.timer.scheduleAtFixedRate(task, 0, 1000);
@@ -201,16 +304,48 @@ public class GamePage {
             if(Controller.mainController.factories.iceCreamFactories!=null)this.buildWork(iceCreamBuild);
     }
     //TODO mach with back work factory
+public void plant(MouseEvent event){
+            if(inputProcessor.plant(event.getX()+120, event.getY()+140)){
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Image image = new Image(getClass().getResourceAsStream("picturse\\grass.png"));
+                ImageView imageView = new ImageView(image);
+                imageView.setX(event.getX()+120);
+                imageView.setY(event.getY()+140);
+                imageView.setFitHeight(60);
+                imageView.setFitWidth(60);
+                ArrayList<ImageView> images=new ArrayList<>();
+                if(GamePage.goods.containsKey("picturse\\grass.png")){
+                    images=GamePage.goods.get("picturse\\grass.png");
+                    images.add(imageView);
+                    GamePage.goods.put("picturse\\grass.png",images);
+                }
+                else {
+                    images.add(imageView);
+                    GamePage.goods.put("picturse\\grass.png",images);
+                }
+                GamePage.grassImageViewHashMap.put(Controller.mainController.goods.grasses.get(Controller.mainController.goods.grasses.size()-1),imageView);
+                imageView.setVisible(true);
+                Scene scene = stage.getScene();
+                root1= (AnchorPane) scene.getRoot();
+                root1.getChildren().add(imageView);
+                scene.setRoot(root1);
+                stage.setScene(scene);
+                stage.show();
+                Controller.logger("WARNING","GAME PAGE .");
+                renew();
+            }
 
+
+}
     // TODO mach with back build factory
-    public void weel(){ if(GamePage.state)this.weelWork(weel); }
-    public void weaving(){if(GamePage.state)this.factoryWork(weaving,weavingBuild); }
-    public void eggPowder(){if(GamePage.state)this.factoryWork(eggPowder,eggPowderBuild); }
-    public void milkSeperator(){if(GamePage.state)this.factoryWork(milkSeperator,milkSeperatorBuild); }
-    public void bakery(){if(GamePage.state)this.factoryWork(bakery,bakeryBuild); }
-    public void spinnery(){if(GamePage.state)this.factoryWork(spinnery,spinneryBuild); }
-    public void chickennery(){if(GamePage.state)this.factoryWork(chickennery,chickenneryBuild); }
-    public void iceCream(){if(GamePage.state)this.factoryWork(iceCream,iceCreamBuild); }
+    public void weel(){ if(GamePage.state&&inputProcessor.well())this.weelWork(weel); }
+    public void weaving(){if(GamePage.state&&inputProcessor.work("WEAVING"))this.factoryWork(weaving,weavingBuild); }
+    public void eggPowder(){if(GamePage.state&&inputProcessor.work("EGGPOWDER"))this.factoryWork(eggPowder,eggPowderBuild); }
+    public void milkSeperator(){if(GamePage.state&&inputProcessor.work("MILKSEPRATOR"))this.factoryWork(milkSeperator,milkSeperatorBuild); }
+    public void bakery(){if(GamePage.state&&inputProcessor.work("COOKIEFACTORY"))this.factoryWork(bakery,bakeryBuild); }
+    public void spinnery(){if(GamePage.state&&inputProcessor.work("SPINNERY"))this.factoryWork(spinnery,spinneryBuild); }
+    public void chickennery(){if(GamePage.state&&inputProcessor.work("CHICKENERRY"))this.factoryWork(chickennery,chickenneryBuild); }
+    public void iceCream(){if(GamePage.state&&inputProcessor.work("ICECRAEMFACTORY"))this.factoryWork(iceCream,iceCreamBuild); }
     public void factoryWork(ImageView imageView,Button button){
             if(!button.isVisible()){
                 FadeTransition fade = new FadeTransition();
@@ -279,12 +414,12 @@ public class GamePage {
 
     }
 
-    public void addGood(ActionEvent event,String url , int x , int y , int high,int width){
+    public void addGood(MouseEvent event,String url , int x , int y , int high,int width){
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Image image = new Image(getClass().getResourceAsStream(url));
             ImageView imageView = new ImageView(image);
-            imageView.setX(x);
-            imageView.setY(y);
+            imageView.setX(x+100);
+            imageView.setY(y+110);
             imageView.setFitHeight(high);
             imageView.setFitWidth(width);
             ArrayList<ImageView> images=new ArrayList<>();
@@ -313,18 +448,27 @@ public class GamePage {
             Controller.logger("WARNING","GAME PAGE .");
             renew();
     }
-    public static int a=0;
+
     public void showingGood(Stage stages){
         this.singleGoodShowing("picturse\\egg.png",stages);
         this.singleGoodShowing("picturse\\FEATHER.png",stages);
         this.singleGoodShowing("picturse\\flour.png",stages);
         this.singleGoodShowing("picturse\\milk.png",stages);
         this.singleGoodShowing("picturse\\silk.png",stages);
+        this.singleGoodShowing("picturse\\cookie.png",stages);
+        this.singleGoodShowing("picturse\\liondoll.png",stages);
+        this.singleGoodShowing("picturse\\tigerdoll.png",stages);
+        this.singleGoodShowing("picturse\\beardoll.png",stages);
+        this.singleGoodShowing("picturse\\sepratedmilk.png",stages);
+        this.singleGoodShowing("picturse\\cloth.png",stages);
+        //this.singleGoodShowing("picturse\\icecream.png",stages);
+
     }
+
+
     public void singleGoodShowing(String url,Stage stages){
         if(GamePage.animals.get(url)!=null)
             for (ImageView imageView : GamePage.animals.get(url)) {
-                a++;
             Scene scene = stages.getScene();
             root1= (AnchorPane) scene.getRoot();
             double x,y,high,width;
@@ -334,8 +478,8 @@ public class GamePage {
             width=imageView.getFitWidth();
             Image image = new Image(getClass().getResourceAsStream(url));
                imageView=new ImageView(image);
-               imageView.setLayoutX(x+30*a);
-               imageView.setLayoutY(y+30*a);
+               imageView.setLayoutX(x);
+               imageView.setLayoutY(y);
                imageView.setFitHeight(high);
                imageView.setFitWidth(width);
                 ImageView finalImageView = imageView;
@@ -355,82 +499,78 @@ public class GamePage {
     }
 
 
-    public void addSILK(ActionEvent event){
-        if(GamePage.state) {
-            this.addAnimal(event,"picturse\\silk.png",300,250,80,80);
-        }
-    }
-
-    public void addBEARDOLL(ActionEvent event){
-        if(GamePage.state) {
-            this.addAnimal(event,"picturse\\chicken.png",300,250,80,80);
-        }
-    }
-    public void addLIONDOLL(ActionEvent event){
-        if(GamePage.state) {
-            this.addAnimal(event,"picturse\\turkey.png",300,250,80,80);
-        }
-    }
-    public void addTIGERDOLL(ActionEvent event){
-        if(GamePage.state) {
-            this.addAnimal(event,"picturse\\chicken.png",300,250,80,80);
-        }
-    }
-    public void addGRASS(ActionEvent event){
-        if(GamePage.state) {
-            this.addAnimal(event,"picturse\\chicken.png",300,250,80,80);
-        }
-    }
-    public void addICECREAM(ActionEvent event){
-        if(GamePage.state) {
-            this.addAnimal(event,"picturse\\turkey.png",300,250,80,80);
-        }
-    }
-    public void addMILK(ActionEvent event){
-        if(GamePage.state) {
-            this.addAnimal(event,"picturse\\milk.png",300,250,80,80);
-        }
-    }
-    public void addSEPARATEDMILK(ActionEvent event){
-        if(GamePage.state) {
-            this.addAnimal(event,"picturse\\turkey.png",300,250,80,80);
-        }
-    }
-    public void addEgg(ActionEvent event){
+//    public void addSILK(ActionEvent event){
+//        if(GamePage.state) {
+//            this.addGood(event,"picturse\\silk.png",300,250,80,80);
+//        }
+//    }
+//
+//    public void addBEARDOLL(ActionEvent event){
+//        if(GamePage.state) {
+//            this.addGood(event,"picturse\\chicken.png",300,250,80,80);
+//        }
+//    }
+//    public void addLIONDOLL(ActionEvent event){
+//        if(GamePage.state) {
+//            this.addGood(event,"picturse\\turkey.png",300,250,80,80);
+//        }
+//    }
+//    public void addTIGERDOLL(ActionEvent event){
+//        if(GamePage.state) {
+//            this.addGood(event,"picturse\\chicken.png",300,250,80,80);
+//        }
+//    }
+//
+//    public void addICECREAM(ActionEvent event){
+//        if(GamePage.state) {
+//            this.addGood(event,"picturse\\turkey.png",300,250,80,80);
+//        }
+//    }
+//    public void addMILK(ActionEvent event){
+//        if(GamePage.state) {
+//            this.addGood(event,"picturse\\milk.png",300,250,80,80);
+//        }
+//    }
+//    public void addSEPARATEDMILK(ActionEvent event){
+//        if(GamePage.state) {
+//            this.addGood(event,"picturse\\turkey.png",300,250,80,80);
+//        }
+//    }
+    public void addEgg(MouseEvent event){
         if(GamePage.state) {
             this.addGood(event,"picturse\\egg.png",300,250,80,80);
         }
     }
-    public void addCLOTH(ActionEvent event){
-        if(GamePage.state) {
-            this.addAnimal(event,"picturse\\turkey.png",300,250,80,80);
-        }
-    }
-    public void addCOOKIE(ActionEvent event){
-        if(GamePage.state) {
-            this.addAnimal(event,"picturse\\buffalo.png",300,250,80,80);
-
-        }
-    }
-    public void addFEATHER(ActionEvent event){
-        if(GamePage.state) {
-            this.addAnimal(event,"picturse\\FEATHER.png",300,250,80,80);
-        }
-
-    }
-    public void addFLOUR(ActionEvent event){
-        if(GamePage.state) {
-            this.addAnimal(event,"picturse\\flour.png",300,250,80,80);
-        }
-    }
-
-
+//    public void addCLOTH(ActionEvent event){
+//        if(GamePage.state) {
+//            this.addGood(event,"picturse\\turkey.png",300,250,80,80);
+//        }
+//    }
+//    public void addCOOKIE(ActionEvent event){
+//        if(GamePage.state) {
+//            this.addGood(event,"picturse\\buffalo.png",300,250,80,80);
+//
+//        }
+//    }
+//    public void addFEATHER(ActionEvent event){
+//        if(GamePage.state) {
+//            this.addGood(event,"picturse\\FEATHER.png",300,250,80,80);
+//        }
+//
+//    }
+//    public void addFLOUR(ActionEvent event){
+//        if(GamePage.state) {
+//            this.addGood(event,"picturse\\flour.png",300,250,80,80);
+//        }
+//    }
 
 
 
 
 
-    public void addAnimal(ActionEvent event,String url , int x , int y , int high,int width){
+
+
+    public void addAnimal(ActionEvent event,String url , int x , int y , int high,int width,Animal animal){
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Image image = new Image(getClass().getResourceAsStream(url));
             ImageView imageView = new ImageView(image);
@@ -448,6 +588,7 @@ public class GamePage {
                 images.add(imageView);
                 GamePage.animals.put(url,images);
             }
+            GamePage.animalImageViewHashMap.put(animal,imageView);
             Scene scene = stage.getScene();
             root1= (AnchorPane) scene.getRoot();
             root1.getChildren().add(imageView);
@@ -464,16 +605,13 @@ public class GamePage {
         this.singleAnimalShowing("picturse\\buffalo.png",stages);
         this.singleAnimalShowing("picturse\\dog.png",stages);
         this.singleAnimalShowing("picturse\\cat.png",stages);
-        this.singleAnimalShowing("picturse\\tiger.png",stages);
-        this.singleAnimalShowing("picturse\\lion.png",stages);
-        this.singleAnimalShowing("picturse\\bear.png",stages);
     }
 
     public void singleAnimalShowing(String url,Stage stages){
 
         if(GamePage.animals.get(url)!=null)
             for (ImageView imageView : GamePage.animals.get(url)) {
-                a++;
+
             Scene scene = stages.getScene();
             root1= (AnchorPane) scene.getRoot();
             double x,y,high,width;
@@ -483,8 +621,8 @@ public class GamePage {
             width=imageView.getFitWidth();
             Image image = new Image(getClass().getResourceAsStream(url));
                imageView=new ImageView(image);
-               imageView.setLayoutX(x+30*a);
-               imageView.setLayoutY(y+30*a);
+               imageView.setLayoutX(x);
+               imageView.setLayoutY(y);
                imageView.setFitHeight(high);
                imageView.setFitWidth(width);
             root1.getChildren().add(imageView);
@@ -499,29 +637,45 @@ public class GamePage {
 
     public void buyChicken(ActionEvent event){
         if(GamePage.state) {
-            if(inputProcessor.processBuy("chicken"))this.addAnimal(event,"picturse\\chicken.png",300,250,80,80);
+            if(inputProcessor.processBuy("chicken")){
+                this.addAnimal(event,"picturse\\chicken.png",300,250,80,80,Controller.mainController.animals.chickens.get(Controller.mainController.animals.chickens.size()-1));
+                for (int i = 0; i < GoodsEnum.EGG.getTimeOfRemaining(); i++) {
+                   // this.addEgg(event);
+                }
+            }
         }
     }
     public void buyTurkey(ActionEvent event){
         if(GamePage.state) {
-            if(inputProcessor.processBuy("turkey")) this.addAnimal(event,"picturse\\turkey.png",300,250,80,80);
+            if(inputProcessor.processBuy("turkey")) {
+                this.addAnimal(event,"picturse\\turkey.png",300,250,80,80,Controller.mainController.animals.turkeys.get(Controller.mainController.animals.turkeys.size()-1));
+                for (int i = 0; i < GoodsEnum.FEATHER.getTimeOfRemaining(); i++) {
+                    //this.addFEATHER(event);
+                }
+            }
         }
     }
     public void buyBuffalo(ActionEvent event){
         if(GamePage.state) {
-            if(inputProcessor.processBuy("bufallo"))this.addAnimal(event,"picturse\\buffalo.png",300,250,80,80);
-
+            if(inputProcessor.processBuy("bufallo")){
+                this.addAnimal(event,"picturse\\buffalo.png",300,250,80,80,Controller.mainController.animals.bufallos.get(Controller.mainController.animals.bufallos.size()-1));
+                for (int i = 0; i < GoodsEnum.MILK.getTimeOfRemaining(); i++) {
+                    //this.addMILK(event);
+                }
+            }
         }
     }
     public void buyDog(ActionEvent event){
         if(GamePage.state) {
-            if(inputProcessor.processBuy("cat"))this.addAnimal(event,"picturse\\dog.png",300,250,80,80);
+            if(inputProcessor.processBuy("dog"))
+                this.addAnimal(event,"picturse\\dog.png",300,250,80,80,Controller.mainController.animals.dogs.get(Controller.mainController.animals.dogs.size()-1));
         }
 
     }
     public void buyCat(ActionEvent event){
         if(GamePage.state) {
-            if(inputProcessor.processBuy("cat")) this.addAnimal(event,"picturse\\cat.png",300,250,80,80);
+            if(inputProcessor.processBuy("cat"))
+                this.addAnimal(event,"picturse\\cat.png",300,250,80,80,Controller.mainController.animals.cats.get(Controller.mainController.animals.cats.size()-1));
         }
     }
 
@@ -532,16 +686,23 @@ public class GamePage {
         if(GamePage.state) {
             for (int i = 0; i < 300; i++) {
                if( Controller.mainController.personsController.CurrentUser.currentLevel.TimeOfLionComes.containsKey(i))
-                   this.addWildeAnimal(event,"picturse\\lion.png",300,250,80,80);
+                   this.addWildeAnimal(event,"picturse\\lion.png",300,250,80,80,Controller.mainController.animals.chickens.get(Controller.mainController.animals.lions.size()-1));
+                    //this.addLIONDOLL(event);
             }
             }
     }
 
+    public void setWildeAnimal(ActionEvent event){
+            this.buyBear(event);
+            this.buyLion(event);
+            this.buyTiger(event);
+    }
     public void buyTiger(ActionEvent event){
         if(GamePage.state) {
             for (int i = 0; i < 300; i++) {
                 if (Controller.mainController.personsController.CurrentUser.currentLevel.TimeOfTigerComes.containsKey(i))
-                    this.addWildeAnimal(event, "picturse\\tiger.png", 300, 250, 80, 80);
+                    this.addWildeAnimal(event, "picturse\\tiger.png", 300, 250, 80, 80,Controller.mainController.animals.chickens.get(Controller.mainController.animals.tigers.size()-1));
+                    //addTIGERDOLL(event);
             }
         }
     }
@@ -550,12 +711,13 @@ public class GamePage {
         if(GamePage.state) {
             for (int i = 0; i < 300; i++) {
                 if (Controller.mainController.personsController.CurrentUser.currentLevel.TimeOfBearComes.containsKey(i))
-                    this.addWildeAnimal(event, "picturse\\bear.png", 300, 250, 80, 80);
+                    this.addWildeAnimal(event, "picturse\\bear.png", 300, 250, 80, 80,Controller.mainController.animals.chickens.get(Controller.mainController.animals.bears.size()-1));
+                   // addBEARDOLL(event);
             }
         }
     }
 
-    public void addWildeAnimal(ActionEvent event,String url , int x , int y , int high,int width){
+    public void addWildeAnimal(ActionEvent event,String url , int x , int y , int high,int width,Animal animal){
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Image image = new Image(getClass().getResourceAsStream(url));
         ImageView imageView = new ImageView(image);
@@ -573,12 +735,14 @@ public class GamePage {
             images.add(imageView);
             GamePage.wildeAnimal.put(url,images);
         }
+       // animal.imageView=imageView;
         imageView.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if(inputProcessor.processPickUp((int)imageView.getLayoutX(),(int)imageView.getLayoutY()))imageView.setVisible(false);
+                if(inputProcessor.cage((int)imageView.getLayoutX(),(int)imageView.getLayoutY()))imageView.setVisible(false);
             }
         });
+        GamePage.animalImageViewHashMap.put(animal,imageView);
         imageView.setVisible(false);
         Scene scene = stage.getScene();
         root1= (AnchorPane) scene.getRoot();
@@ -599,7 +763,6 @@ public class GamePage {
     public void singleWildeAnimalShowing(String url,Stage stages){
         if(GamePage.wildeAnimal.get(url)!=null)
             for (ImageView imageView : GamePage.wildeAnimal.get(url)) {
-                a++;
                 Scene scene = stages.getScene();
                 root1= (AnchorPane) scene.getRoot();
                 double x,y,high,width;
@@ -609,8 +772,8 @@ public class GamePage {
                 width=imageView.getFitWidth();
                 Image image = new Image(getClass().getResourceAsStream(url));
                 imageView=new ImageView(image);
-                imageView.setLayoutX(x+30*a);
-                imageView.setLayoutY(y+30*a);
+                imageView.setLayoutX(x);
+                imageView.setLayoutY(y);
                 imageView.setFitHeight(high);
                 imageView.setFitWidth(width);
                 ImageView finalImageView = imageView;
