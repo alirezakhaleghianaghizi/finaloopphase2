@@ -172,19 +172,18 @@ public class ControllGame {
                                 else sec=58;
                         }
                         else{
-                                sec-=2;
+                         sec-=2;
                         }
                         gamePage.state=ControllGame.state;
                         gamePage.timer=ControllGame.timer;
                         gamePage.renew();
-                        gamePage.showingAnimal(stage);
                         gamePage.showingWildeAnimal(stage);
                         gamePage.showingGood(stage);
                         gamePage.reloadFactory();
-
                         stage.setScene(scene);
                         stage.show();
-                        gamePage.showingAnimal(stage);
+                        gamePage.renewingGrass(stage);
+                        gamePage.movingAnimals(stage);
                         gamePage.showingWildeAnimal(stage);
                 }
                 catch (Exception e){

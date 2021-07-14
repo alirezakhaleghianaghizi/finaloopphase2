@@ -28,6 +28,15 @@ import java.util.TimerTask;
 
 import javafx.util.Duration;
 import model.animal.Animal;
+import model.animal.AnimalEnum;
+import model.animal.asisstant.Cat;
+import model.animal.defender.Dog;
+import model.animal.producer.Bufallo;
+import model.animal.producer.Chicken;
+import model.animal.producer.Turkey;
+import model.animal.wild.Bear;
+import model.animal.wild.Lion;
+import model.animal.wild.Tiger;
 import model.goods.Goods;
 import model.goods.GoodsEnum;
 import model.goods.Grass;
@@ -108,7 +117,6 @@ ActionEvent myActionEvent;
         public void picturseNewing(MouseEvent event){
             if(state){
                 pictureGoodNewing(event);
-                pictureAnimalNewing();
                 pictureWildeNewing();
                 renewingGrass(event);
             }
@@ -127,7 +135,7 @@ ActionEvent myActionEvent;
            if(Controller.mainController.goods.grasses!=null)
                for (Grass grass1 : Controller.mainController.goods.grasses) {
                     if(grass1.y==grass.getY()&&grass1.x==grass.getX()){
-                        System.out.println("grass 2"+grass1.x);
+                        System.err.println("grass2 "+grass1.x);
                         grass.setVisible(true);
                         //root1.getChildren().add(grass);
                         isIn=true;
@@ -139,6 +147,29 @@ ActionEvent myActionEvent;
            }
 
             }
+        }
+        public void renewingGrass(Stage stage){
+            Scene scene =stage.getScene();
+            root1= (AnchorPane) scene.getRoot();
+
+           if(Controller.mainController.goods.grasses!=null)
+               for (Grass grass1 : Controller.mainController.goods.grasses) {
+                        System.out.println("grass 2"+grass1.x);
+                        Image image = new Image(getClass().getResourceAsStream("picturse\\grass.png"));
+                        ImageView imageView = new ImageView(image);
+                        imageView.setX(grass1.x);
+                        imageView.setY(grass1.y);
+                        imageView.setFitHeight(60);
+                        imageView.setFitWidth(60);
+                        root1.getChildren().add(imageView);
+                   ArrayList<ImageView > grasses=GamePage.goods.get("picturse\\grass.png");
+grasses.add(imageView);
+                   GamePage.goods.put("picturse\\grass.png",grasses);
+                        break;
+                    }
+           scene.setRoot(root1);
+           stage.setScene(scene);
+           stage.show();
         }
 
 
@@ -176,9 +207,55 @@ ActionEvent myActionEvent;
                 else if(productGood.name.equalsIgnoreCase(GoodsEnum.FEATHER.toString())) this.GoodSetSingleImage("picturse\\FEATHER.png",productGood,root1);
                 else if(productGood.name.equalsIgnoreCase(GoodsEnum.FLOUR.toString())){ this.GoodSetSingleImage("picturse\\flour.png",productGood,root1); }
             }
+
+            for (Chicken chicken : Controller.mainController.animals.chickens) {
+               this.addCHickenAndWildeAnimals(chicken,"picturse\\chicken.png",root1);
+            }
+            for (Lion lion : Controller.mainController.animals.lions) {
+               this.addCHickenAndWildeAnimals(lion,"picturse\\lion.png",root1);
+            }
+            for (Tiger tiger : Controller.mainController.animals.tigers) {
+               this.addCHickenAndWildeAnimals(tiger,"picturse\\tiger.png",root1);
+            }
+            for (Bear bear : Controller.mainController.animals.bears) {
+               this.addCHickenAndWildeAnimals(bear,"picturse\\bear.png",root1);
+            }
             scene.setRoot(root1);
 
         }
+
+        public  void addCHickenAndWildeAnimals(Animal animal,String url,AnchorPane root1){
+                if(GamePage.animalImageViewHashMap.get(animal)==null) {
+                    Image image = new Image(getClass().getResourceAsStream(url));
+                    ImageView imageView = new ImageView(image);
+                    imageView.setX(animal.x);
+                    imageView.setY(animal.y);
+                    imageView.setFitHeight(80);
+                    imageView.setFitWidth(80);
+                    ArrayList<ImageView> images=new ArrayList<>();
+                    if(GamePage.animals.containsKey(url)){
+                        images=GamePage.animals.get(url);
+                        images.add(imageView);
+                        GamePage.animals.put(url,images);
+                    }
+                    else {
+                        images.add(imageView);
+                        GamePage.animals.put(url,images);
+                    }
+                    GamePage.animalImageViewHashMap.put(animal,imageView);
+                    if(!animal.name.equalsIgnoreCase(AnimalEnum.CHICKEN.toString())){
+                        imageView.setOnMousePressed(new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent mouseEvent) {
+                                if(Controller.mainController.animals.cage((int)imageView.getX(),(int)imageView.getY(),Controller.mainController.goods,Controller.mainController.logger)==1)imageView.setVisible(false);
+                            }
+                        });
+                    }
+                    root1.getChildren().add(imageView);
+                }
+        }
+
+
         public void GoodSetSingleImage(String url,Goods productGood,AnchorPane Roo){
             Image image = new Image(getClass().getResourceAsStream(url));
             ImageView imageView = new ImageView(image);
@@ -190,15 +267,7 @@ ActionEvent myActionEvent;
                 @Override
                 public void handle(MouseEvent mouseEvent) {
                     if(inputProcessor.processPickUp(productGood.x, productGood.y)){
-//                        System.out.println("picking");
-//                        imageView.setVisible(true);
-//                        Scene scene =  ((Node) mouseEvent.getSource()).getScene();
-//                        root1= (AnchorPane) scene.getRoot();
                         GoodMoving(imageView);
-                       // Roo.getChildren().add(imageView);
-//                        scene.setRoot(root1);
-//                        stage.setScene(scene);
-//                        stage.show();
                     }
                 }
             });
@@ -249,9 +318,89 @@ ActionEvent myActionEvent;
         }
     }
 
-    public void pictureAnimalNewing(){}
+    public void pictureAnimalNewing(){
 
-        public void pictureWildeNewing(){}
+    }
+    public void movingAnimals(){
+       if( Controller.mainController.animals.turkeys!=null) for (Turkey turkey : Controller.mainController.animals.turkeys) if(GamePage.animalImageViewHashMap.get(turkey)!=null)AnimalMovement(GamePage.animalImageViewHashMap.get(turkey),GamePage.animalImageViewHashMap.get(turkey).getX(),GamePage.animalImageViewHashMap.get(turkey).getY(),turkey.x,turkey.y);
+       if( Controller.mainController.animals.chickens!=null) for (Chicken chicken : Controller.mainController.animals.chickens) if(GamePage.animalImageViewHashMap.get(chicken)!=null)AnimalMovement(GamePage.animalImageViewHashMap.get(chicken),GamePage.animalImageViewHashMap.get(chicken).getX(),GamePage.animalImageViewHashMap.get(chicken).getY(),chicken.x,chicken.y);
+       if( Controller.mainController.animals.bufallos!=null) for (Bufallo bufallo : Controller.mainController.animals.bufallos) if(GamePage.animalImageViewHashMap.get(bufallo)!=null)AnimalMovement(GamePage.animalImageViewHashMap.get(bufallo),GamePage.animalImageViewHashMap.get(bufallo).getX(),GamePage.animalImageViewHashMap.get(bufallo).getY(),bufallo.x,bufallo.y);
+       if( Controller.mainController.animals.dogs!=null) for (Dog dog : Controller.mainController.animals.dogs) if(GamePage.animalImageViewHashMap.get(dog)!=null)AnimalMovement(GamePage.animalImageViewHashMap.get(dog),GamePage.animalImageViewHashMap.get(dog).getX(),GamePage.animalImageViewHashMap.get(dog).getY(),dog.x,dog.y);
+       if( Controller.mainController.animals.cats!=null) for (Cat cat: Controller.mainController.animals.cats) if(GamePage.animalImageViewHashMap.get(cat)!=null)AnimalMovement(GamePage.animalImageViewHashMap.get(cat),GamePage.animalImageViewHashMap.get(cat).getX(),GamePage.animalImageViewHashMap.get(cat).getY(),cat.x,cat.y);
+       if( Controller.mainController.animals.tigers!=null) for (Tiger tiger : Controller.mainController.animals.tigers) if(GamePage.animalImageViewHashMap.get(tiger)!=null)AnimalMovement(GamePage.animalImageViewHashMap.get(tiger),GamePage.animalImageViewHashMap.get(tiger).getX(),GamePage.animalImageViewHashMap.get(tiger).getY(),tiger.x,tiger.y);
+       if( Controller.mainController.animals.lions!=null) for (Lion lion : Controller.mainController.animals.lions) if(GamePage.animalImageViewHashMap.get(lion)!=null) AnimalMovement(GamePage.animalImageViewHashMap.get(lion),GamePage.animalImageViewHashMap.get(lion).getX(),GamePage.animalImageViewHashMap.get(lion).getY(),lion.x,lion.y);
+       if( Controller.mainController.animals.bears!=null) for (Bear bear : Controller.mainController.animals.bears) if(GamePage.animalImageViewHashMap.get(bear)!=null)AnimalMovement(GamePage.animalImageViewHashMap.get(bear),GamePage.animalImageViewHashMap.get(bear).getX(),GamePage.animalImageViewHashMap.get(bear).getY(),bear.x,bear.y);
+    }
+
+    public void AnimalMovement(ImageView imageView,double x1,double y1,double x2,double y2){
+        {
+            System.out.println(x1);
+            System.out.println(y1);
+            System.out.println(x2);
+            System.out.println(y2);
+            TranslateTransition translate = new TranslateTransition();
+            translate.setNode(imageView);
+            translate.setDuration(Duration.millis(1000));
+            translate.setCycleCount(1);
+            translate.setToX(x2-x1);
+            translate.setToY(y2-y1);
+            translate.setFromX(0);
+            translate.setFromY(0);
+            translate.setAutoReverse(true);
+            translate.play();
+        }
+    }
+    public void movingAnimals(Stage event){
+       if( Controller.mainController.animals.turkeys!=null) for (Turkey turkey : Controller.mainController.animals.turkeys) AnimalMovement(GamePage.animalImageViewHashMap.get(turkey),GamePage.animalImageViewHashMap.get(turkey).getX(),GamePage.animalImageViewHashMap.get(turkey).getY(),turkey.x,turkey.y,event);
+       if( Controller.mainController.animals.chickens!=null) for (Chicken chicken : Controller.mainController.animals.chickens) AnimalMovement(GamePage.animalImageViewHashMap.get(chicken),GamePage.animalImageViewHashMap.get(chicken).getX(),GamePage.animalImageViewHashMap.get(chicken).getY(),chicken.x,chicken.y,event);
+       if( Controller.mainController.animals.bufallos!=null) for (Bufallo bufallo : Controller.mainController.animals.bufallos) AnimalMovement(GamePage.animalImageViewHashMap.get(bufallo),GamePage.animalImageViewHashMap.get(bufallo).getX(),GamePage.animalImageViewHashMap.get(bufallo).getY(),bufallo.x,bufallo.y,event);
+       if( Controller.mainController.animals.dogs!=null) for (Dog dog : Controller.mainController.animals.dogs) AnimalMovement(GamePage.animalImageViewHashMap.get(dog),GamePage.animalImageViewHashMap.get(dog).getX(),GamePage.animalImageViewHashMap.get(dog).getY(),dog.x,dog.y,event);
+       if( Controller.mainController.animals.cats!=null) for (Cat cat: Controller.mainController.animals.cats) AnimalMovement(GamePage.animalImageViewHashMap.get(cat),GamePage.animalImageViewHashMap.get(cat).getX(),GamePage.animalImageViewHashMap.get(cat).getY(),cat.x,cat.y,event);
+       if( Controller.mainController.animals.tigers!=null) for (Tiger tiger : Controller.mainController.animals.tigers) AnimalMovement(GamePage.animalImageViewHashMap.get(tiger),GamePage.animalImageViewHashMap.get(tiger).getX(),GamePage.animalImageViewHashMap.get(tiger).getY(),tiger.x,tiger.y,event);
+       if( Controller.mainController.animals.lions!=null) for (Lion lion : Controller.mainController.animals.lions) AnimalMovement(GamePage.animalImageViewHashMap.get(lion),GamePage.animalImageViewHashMap.get(lion).getX(),GamePage.animalImageViewHashMap.get(lion).getY(),lion.x,lion.y,event);
+       if( Controller.mainController.animals.bears!=null) for (Bear bear : Controller.mainController.animals.bears) AnimalMovement(GamePage.animalImageViewHashMap.get(bear),GamePage.animalImageViewHashMap.get(bear).getX(),GamePage.animalImageViewHashMap.get(bear).getY(),bear.x,bear.y,event);
+        }
+
+    public void AnimalMovement(ImageView imageView,double x1,double y1,double x2,double y2,Stage event){
+        {
+            Scene scene =   event.getScene();
+            root1= (AnchorPane) scene.getRoot();
+            root1.getChildren().add(imageView);
+            System.out.println(x1);
+            System.out.println(y1);
+            System.out.println(x2);
+            System.out.println(y2);
+            TranslateTransition translate = new TranslateTransition();
+            translate.setNode(imageView);
+            translate.setDuration(Duration.millis(1000));
+            translate.setCycleCount(1);
+            translate.setToX(x2-x1);
+            translate.setToY(y2-y1);
+            translate.setFromX(0);
+            translate.setFromY(0);
+            translate.setAutoReverse(true);
+            translate.play();
+        }
+    }
+
+    public void setImageAnimalPosition(){
+        if( Controller.mainController.animals.turkeys!=null) for (Turkey turkey : Controller.mainController.animals.turkeys) AnimalMovement1(GamePage.animalImageViewHashMap.get(turkey),GamePage.animalImageViewHashMap.get(turkey).getX(),GamePage.animalImageViewHashMap.get(turkey).getY(),turkey.x,turkey.y);
+        if( Controller.mainController.animals.chickens!=null) for (Chicken chicken : Controller.mainController.animals.chickens) AnimalMovement1(GamePage.animalImageViewHashMap.get(chicken),GamePage.animalImageViewHashMap.get(chicken).getX(),GamePage.animalImageViewHashMap.get(chicken).getY(),chicken.x,chicken.y);
+        if( Controller.mainController.animals.bufallos!=null) for (Bufallo bufallo : Controller.mainController.animals.bufallos) AnimalMovement1(GamePage.animalImageViewHashMap.get(bufallo),GamePage.animalImageViewHashMap.get(bufallo).getX(),GamePage.animalImageViewHashMap.get(bufallo).getY(),bufallo.x,bufallo.y);
+        if( Controller.mainController.animals.dogs!=null) for (Dog dog : Controller.mainController.animals.dogs) AnimalMovement1(GamePage.animalImageViewHashMap.get(dog),GamePage.animalImageViewHashMap.get(dog).getX(),GamePage.animalImageViewHashMap.get(dog).getY(),dog.x,dog.y);
+        if( Controller.mainController.animals.cats!=null) for (Cat cat: Controller.mainController.animals.cats) AnimalMovement1(GamePage.animalImageViewHashMap.get(cat),GamePage.animalImageViewHashMap.get(cat).getX(),GamePage.animalImageViewHashMap.get(cat).getY(),cat.x,cat.y);
+        if( Controller.mainController.animals.tigers!=null) for (Tiger tiger : Controller.mainController.animals.tigers) AnimalMovement1(GamePage.animalImageViewHashMap.get(tiger),GamePage.animalImageViewHashMap.get(tiger).getX(),GamePage.animalImageViewHashMap.get(tiger).getY(),tiger.x,tiger.y);
+        if( Controller.mainController.animals.lions!=null) for (Lion lion : Controller.mainController.animals.lions) AnimalMovement1(GamePage.animalImageViewHashMap.get(lion),GamePage.animalImageViewHashMap.get(lion).getX(),GamePage.animalImageViewHashMap.get(lion).getY(),lion.x,lion.y);
+        if( Controller.mainController.animals.bears!=null) for (Bear bear : Controller.mainController.animals.bears) AnimalMovement1(GamePage.animalImageViewHashMap.get(bear),GamePage.animalImageViewHashMap.get(bear).getX(),GamePage.animalImageViewHashMap.get(bear).getY(),bear.x,bear.y);
+
+    };
+    public  void AnimalMovement1(ImageView imageView , double x1,double y1,double x2,double y2){
+        imageView.setX(x2);
+        imageView.setY(y2);
+    }
+        public void pictureWildeNewing(){
+
+        }
 
     public void renew1() {
             task = new TimerTask() {
@@ -260,7 +409,9 @@ ActionEvent myActionEvent;
             try{
                 GamePage.state=true;
                 GamePage.sec++;
+                setImageAnimalPosition();
                 inputProcessor.turn(1);
+                movingAnimals();
                 //picturseNewing();
                 if(GamePage.sec<60) {
                     if(GamePage.min<10){
@@ -292,7 +443,9 @@ ActionEvent myActionEvent;
 
 
     public void renew() {
+        setImageAnimalPosition();
         inputProcessor.turn(1);
+        movingAnimals();
         try{ if(GamePage.sec<60) {
             if(GamePage.min<10){
                 if(GamePage.sec<10) timeText.setText(" 0"+GamePage.min+" : 0"+GamePage.sec);
@@ -653,41 +806,6 @@ public void plant(MouseEvent event){
             stage.show();
             Controller.logger("WARNING","GAME PAGE .");
             renew();
-    }
-
-    public void showingAnimal(Stage stages){
-        this.singleAnimalShowing("picturse\\chicken.png",stages);
-        this.singleAnimalShowing("picturse\\turkey.png",stages);
-        this.singleAnimalShowing("picturse\\buffalo.png",stages);
-        this.singleAnimalShowing("picturse\\dog.png",stages);
-        this.singleAnimalShowing("picturse\\cat.png",stages);
-    }
-
-    public void singleAnimalShowing(String url,Stage stages){
-
-        if(GamePage.animals.get(url)!=null)
-            for (ImageView imageView : GamePage.animals.get(url)) {
-
-            Scene scene = stages.getScene();
-            root1= (AnchorPane) scene.getRoot();
-            double x,y,high,width;
-            x=imageView.getX();
-            y=imageView.getY();
-            high=imageView.getFitHeight();
-            width=imageView.getFitWidth();
-            Image image = new Image(getClass().getResourceAsStream(url));
-               imageView=new ImageView(image);
-               imageView.setLayoutX(x);
-               imageView.setLayoutY(y);
-               imageView.setFitHeight(high);
-               imageView.setFitWidth(width);
-            root1.getChildren().add(imageView);
-            scene.setRoot(root1);
-            stages.setScene(scene);
-            stages.show();
-            Controller.logger("WARNING","GAME PAGE .");
-            renew();
-        }
     }
 
     public void buyChicken(ActionEvent event){

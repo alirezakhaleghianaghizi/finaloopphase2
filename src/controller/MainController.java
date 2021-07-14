@@ -349,6 +349,10 @@ public class MainController {
                 yDest = productGood.y;
             }
         }
+        if(minPath==9999999) {
+            animal.randomMoving();
+            return false;
+        }
         return goToDest(xDest,yDest,animal);
     }
 
@@ -411,17 +415,25 @@ public class MainController {
         for (Cat cat : animals.cats) {
             movingCatAnimal(cat);
         }
-        for (Dog dog : animals.dogs) {
+        for (int i = 0; i < animals.dogs.size(); i++) {
+            Dog dog=animals.dogs.get(i);
             movingDog(dog);
+            if(!animals.dogs.contains(dog)) i--;
         }
-        for (Lion lion : animals.lions) {
+        for (int i = 0; i < animals.lions.size(); i++) {
+            Lion lion=animals.lions.get(i);
             lion.randomMoving();
+            if(!animals.lions.contains(lion)) i--;
         }
-        for (Tiger tiger : animals.tigers) {
+        for (int i = 0; i < animals.tigers.size(); i++) {
+        Tiger tiger=animals.tigers.get(i);
             tiger.randomMoving();
+            if(!animals.tigers.contains(tiger))i--;
         }
-        for (Bear bear : animals.bears) {
+        for (int i = 0; i < animals.bears.size(); i++) {
+            Bear bear=animals.bears.get(i);
             bear.randomMoving();
+            if(!animals.bears.contains(bear)) i--;
         }
         wildsAttack();
     }

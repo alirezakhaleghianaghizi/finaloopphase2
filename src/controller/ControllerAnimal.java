@@ -76,7 +76,7 @@ public class ControllerAnimal {
     public int  cage(double x, double y, ControllerGoods goods, Logger logger){
 
         for (Tiger tiger : tigers) {
-            if(tiger.x==x&&tiger.y==y){
+            if(tiger.x<=x+10&&tiger.x>=x-10&&tiger.y<=y+10&&tiger.y>=y-10){
              tiger.cage+=1;
                 HashMap<Integer ,Integer> cageSet = new HashMap<>();
                 cageSet.put(1,Timing.getCurrentTime());
@@ -97,7 +97,7 @@ public class ControllerAnimal {
             }
         }
         for (Lion lion : lions) {
-            if(lion.x==x&&lion.y==y){
+            if(lion.x<=x+10&&lion.x>=x-10&&lion.y<=y+10&&lion.y>=y-10){
                 lion.cage+=1;
                 HashMap<Integer ,Integer> cageSet = new HashMap<>();
                 cageSet.put(1,Timing.getCurrentTime());
@@ -118,7 +118,9 @@ public class ControllerAnimal {
             }
         }
         for (Bear bear : bears) {
-            if(bear.x==x&&bear.y==y){
+
+            if(bear.x<=x+10&&bear.x>=x-10&&bear.y<=y+10&&bear.y>=y-10){
+                System.err.println("ok cage");
                 bear.cage+=1;
                 HashMap<Integer ,Integer> cageSet = new HashMap<>();
                 cageSet.put(1,Timing.getCurrentTime());
