@@ -237,7 +237,7 @@ public class InputProcessor {
             case "ICECRAEMFACTORY":return workSituation(mainController.factories.iceCreamFactories);
             case "SPINNERY":return workSituation(mainController.factories.spinneryFactories);
             case "WEAVING":return workSituation(mainController.factories.weavingFactories);
-            case "CHICKENNERY":return workSituation(mainController.factories.chickenerryFactory);
+            case "CHICKENERRY":return workSituation(mainController.factories.chickenerryFactory);
         }
         this.mainController.logger.commands.add("ERROR,"+this.mainController.logger.lastChange.toString()+",THERE IS NO WORKSHOP WITH NAME "+workShopName);
         System.err.println("THERE IS NO WORKSHOP WITH NAME "+workShopName);

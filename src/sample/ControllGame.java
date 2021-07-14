@@ -141,6 +141,8 @@ public class ControllGame {
                         ControllGame.state=false;
                         ControllGame.timer=new Timer();
                         GamePage.animals=new HashMap<>();
+                        Controller.mainController.personsController.CurrentUser.totalCoins=100000;
+                        Timing.setCurrentTime(0);
                         gamePage.setWildeAnimal(event);
                         switchingGamePage(event);
                 }
@@ -164,6 +166,14 @@ public class ControllGame {
                         GamePage gamePage = loader.getController();
                         gamePage.sec=ControllGame.sec;
                         gamePage.min=ControllGame.min;
+                        if(sec==0||sec==1){
+                                min--;
+                                if(sec==1)sec=59;
+                                else sec=58;
+                        }
+                        else{
+                                sec-=2;
+                        }
                         gamePage.state=ControllGame.state;
                         gamePage.timer=ControllGame.timer;
                         gamePage.renew();
@@ -171,10 +181,11 @@ public class ControllGame {
                         gamePage.showingWildeAnimal(stage);
                         gamePage.showingGood(stage);
                         gamePage.reloadFactory();
-                        Controller.mainController.personsController.CurrentUser.totalCoins=100000;
+
                         stage.setScene(scene);
                         stage.show();
                         gamePage.showingAnimal(stage);
+                        gamePage.showingWildeAnimal(stage);
                 }
                 catch (Exception e){
                         e.printStackTrace();

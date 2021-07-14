@@ -433,7 +433,6 @@ public class MainController {
                 animal.livies=110;
                 animal.isFull=true;
                 animal.produce=new Timing();
-                // removing here creats bug ??!
                 goods.grasses.remove(grass);
                 return true;
             }
@@ -458,18 +457,18 @@ public class MainController {
     public  producerAnimal findMostHungry(Grass grass){
         ArrayList<producerAnimal> hungries = new ArrayList<>();
             for (Chicken chicken : animals.chickens) {
-                if((grass.x<= chicken.x+80||grass.x>= chicken.x-80)&&(grass.y<= chicken.y+80||grass.y>= chicken.y-80)){
+                if((grass.x<= chicken.x+40&&grass.x>= chicken.x-40)&&(grass.y<= chicken.y+40&&grass.y>= chicken.y-40)){
                     hungries.add(chicken);
                     System.out.println("chicken");
                 }
             }
             for (Turkey turkey : animals.turkeys) {
-                if((grass.x<= turkey.x+80||grass.x>= turkey.x-80)&&(grass.y<= turkey.y+80||grass.y>= turkey.y-80)){
+                if((grass.x<= turkey.x+40&&grass.x>= turkey.x-40)&&(grass.y<= turkey.y+40&&grass.y>= turkey.y-40)){
                     hungries.add(turkey);
                 }
             }
             for (Bufallo bufallo : animals.bufallos) {
-                if((grass.x<= bufallo.x+80||grass.x>= bufallo.x-80)&&(grass.y<= bufallo.y+80||grass.y>= bufallo.y-80)){
+                if((grass.x<= bufallo.x+40&&grass.x>= bufallo.x-40)&&(grass.y<= bufallo.y+40&&grass.y>= bufallo.y-40)){
                     hungries.add(bufallo);
                 }
             }
@@ -501,7 +500,6 @@ public class MainController {
             }
             if(bool){
                 animals.bufallos.remove(bufallo);
-                //bufallo.imageView.setVisible(false);
             }
 
         }
@@ -520,7 +518,6 @@ public class MainController {
             }
             if(bool){
                 animals.chickens.remove(chicken);
-               // chicken.imageView.setVisible(false);
             }
 
         }
@@ -538,20 +535,18 @@ public class MainController {
             }
             if(bool) {
                 animals.turkeys.remove(turkey);
-                //turkey.imageView.setVisible(false);
             }
         }
         index2.clear();
     }
 
 
-    //Attack refrence in moving
     public void dogAndWildDie(){
         ArrayList<Animal> saveKilling = new ArrayList<>();
         boolean bool ;
         for (Lion lion : animals.lions) {
             for (Dog dog : animals.dogs) {
-                if((dog.x<= lion.x+80||dog.x>= lion.x-80)&&(dog.y<= lion.y+80||dog.y>= lion.y-80)){
+                if((dog.x<= lion.x+40&&dog.x>= lion.x-40)&&(dog.y<= lion.y+40&&dog.y>= lion.y-40)){
                     saveKilling.add(dog);
                     saveKilling.add(lion);
                 }
@@ -564,7 +559,6 @@ public class MainController {
                 }
                 if(bool){
                     animals.dogs.remove(animal);
-                    //animal.imageView.setVisible(false);
                 }
 
             }
@@ -576,7 +570,6 @@ public class MainController {
                     bool=true;
             }
             if(bool){
-                //animal.imageView.setVisible(false);
                 animals.lions.remove(animal);
             }
 
@@ -585,7 +578,7 @@ public class MainController {
 
         for (Tiger tiger : animals.tigers) {
             for (Dog dog : animals.dogs) {
-                if((dog.x<= tiger.x+80||dog.x>= tiger.x-80)&&(dog.y<= tiger.y+80||dog.y>= tiger.y-80)){
+                if((dog.x<= tiger.x+40&&dog.x>= tiger.x-40)&&(dog.y<= tiger.y+40&&dog.y>= tiger.y-40)){
                     saveKilling.add(dog);
                     saveKilling.add(tiger);
                 }
@@ -598,7 +591,6 @@ public class MainController {
                 }
                 if(bool){
                     animals.dogs.remove(animal);
-                    //animal.imageView.setVisible(false);
                 }
 
             }
@@ -611,7 +603,6 @@ public class MainController {
             }
             if(bool){
                 animals.tigers.remove(animal);
-                //animal.imageView.setVisible(false);
             }
 
         }
@@ -620,7 +611,7 @@ public class MainController {
 
         for (Bear bear : animals.bears) {
             for (Dog dog : animals.dogs) {
-                if((dog.x<= bear.x+80||dog.x>= bear.x-80)&&(dog.y<= bear.y+80||dog.y>= bear.y-80)){
+                if((dog.x<= bear.x+40&&dog.x>= bear.x-40)&&(dog.y<= bear.y+40&&dog.y>= bear.y-40)){
                     saveKilling.add(dog);
                     saveKilling.add(bear);
                 }
@@ -633,7 +624,6 @@ public class MainController {
                 }
                 if(bool){
                     animals.dogs.remove(animal);
-                    //animal.imageView.setVisible(false);
                 }
             }
         }
@@ -645,7 +635,6 @@ public class MainController {
             }
             if(bool){
                 animals.bears.remove(animal);
-                //animal.imageView.setVisible(false);
             }
 
         }
@@ -657,43 +646,43 @@ public class MainController {
         boolean bool ;
         for (Lion lion : animals.lions) {
             for (Chicken chicken : animals.chickens) {
-                if((chicken.x<= lion.x+80||chicken.x>= lion.x-80)&&(chicken.y<= lion.y+80||chicken.y>= lion.y-80))
+                if((chicken.x<= lion.x+40&&chicken.x>= lion.x-40)&&(chicken.y<= lion.y+40&&chicken.y>= lion.y-40))
                     saveDeath.add(chicken);
             }
             for (Turkey turkey : animals.turkeys) {
-                if((turkey.x<= lion.x+80||turkey.x>= lion.x-80)&&(turkey.y<= lion.y+80||turkey.y>= lion.y-80))
+                if((turkey.x<= lion.x+40&&turkey.x>= lion.x-40)&&(turkey.y<= lion.y+40&&turkey.y>= lion.y-40))
                     saveDeath.add(turkey);
             }
             for (Bufallo bufallo : animals.bufallos) {
-                if((bufallo.x<= lion.x+80||bufallo.x>= lion.x-80)&&(bufallo.y<= lion.y+80||bufallo.y>= lion.y-80))
+                if((bufallo.x<= lion.x+40&&bufallo.x>= lion.x-40)&&(bufallo.y<= lion.y+40&&bufallo.y>= lion.y-40))
                     saveDeath.add(bufallo);
             }
         }
         for (Tiger tiger : animals.tigers) {
             for (Chicken chicken : animals.chickens) {
-                if((chicken.x<= tiger.x+80||chicken.x>= tiger.x-80)&&(chicken.y<= tiger.y+80||chicken.y>= tiger.y-80))
+                if((chicken.x<= tiger.x+40&&chicken.x>= tiger.x-40)&&(chicken.y<= tiger.y+40&&chicken.y>= tiger.y-40))
                     saveDeath.add(chicken);
             }
             for (Turkey turkey : animals.turkeys) {
-                if((turkey.x<= tiger.x+80||turkey.x>= tiger.x-80)&&(turkey.y<= tiger.y+80||turkey.y>= tiger.y-80))
+                if((turkey.x<= tiger.x+40&&turkey.x>= tiger.x-40)&&(turkey.y<= tiger.y+40&&turkey.y>= tiger.y-40))
                     saveDeath.add(turkey);
             }
             for (Bufallo bufallo : animals.bufallos) {
-                if((bufallo.x<= tiger.x+80||bufallo.x>= tiger.x-80)&&(bufallo.y<= tiger.y+80||bufallo.y>= tiger.y-80))
+                if((bufallo.x<= tiger.x+40&&bufallo.x>= tiger.x-40)&&(bufallo.y<= tiger.y+40&&bufallo.y>= tiger.y-40))
                     saveDeath.add(bufallo);
             }
         }
         for (Bear bear : animals.bears) {
             for (Chicken chicken : animals.chickens) {
-                if((chicken.x<= bear.x+80||chicken.x>= bear.x-80)&&(chicken.y<= bear.y+80||chicken.y>= bear.y-80))
+                if((chicken.x<= bear.x+40&&chicken.x>= bear.x-40)&&(chicken.y<= bear.y+40&&chicken.y>= bear.y-40))
                     saveDeath.add(chicken);
             }
             for (Turkey turkey : animals.turkeys) {
-                if((turkey.x<= bear.x+80||turkey.x>= bear.x-80)&&(turkey.y<= bear.y+80||turkey.y>= bear.y-80))
+                if((turkey.x<= bear.x+40&&turkey.x>= bear.x-40)&&(turkey.y<= bear.y+40&&turkey.y>= bear.y-40))
                     saveDeath.add(turkey);
             }
             for (Bufallo bufallo : animals.bufallos) {
-                if((bufallo.x<= bear.x+80||bufallo.x>= bear.x-80)&&(bufallo.y<= bear.y+80||bufallo.y>= bear.y-80))
+                if((bufallo.x<= bear.x+40&&bufallo.x>= bear.x-40)&&(bufallo.y<= bear.y+40&&bufallo.y>= bear.y-40))
                     saveDeath.add(bufallo);
             }
         }
@@ -705,7 +694,7 @@ public class MainController {
             }
             if(bool){
                 animals.chickens.remove(producerAnimal);
-                //producerAnimal.imageView.setVisible(false);
+
             }
 
             bool=false;
@@ -715,7 +704,6 @@ public class MainController {
             }
             if(bool){
                 animals.turkeys.remove(producerAnimal);
-               // producerAnimal.imageView.setVisible(false);
             }
 
             bool=false;
@@ -725,7 +713,6 @@ public class MainController {
             }
             if(bool){
                 animals.bufallos.remove(producerAnimal);
-               // producerAnimal.imageView.setVisible(false);
             }
 
         }

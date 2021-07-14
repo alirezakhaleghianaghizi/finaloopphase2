@@ -3,6 +3,7 @@ package sample;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -25,6 +26,7 @@ import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javafx.util.Duration;
 import model.animal.Animal;
 import model.goods.Goods;
 import model.goods.GoodsEnum;
@@ -108,10 +110,38 @@ ActionEvent myActionEvent;
                 pictureGoodNewing(event);
                 pictureAnimalNewing();
                 pictureWildeNewing();
+                renewingGrass(event);
             }
 
 
         }
+
+
+        public void renewingGrass(MouseEvent event){
+            Scene scene =  ((Node) event.getSource()).getScene();
+            root1= (AnchorPane) scene.getRoot();
+            ArrayList<ImageView> grasses=GamePage.goods.get("picturse\\grass.png");
+           if(grasses!=null) for (ImageView grass : grasses) {
+                boolean isIn=false;
+               System.err.println("grass1 "+grass.getY());
+           if(Controller.mainController.goods.grasses!=null)
+               for (Grass grass1 : Controller.mainController.goods.grasses) {
+                    if(grass1.y==grass.getY()&&grass1.x==grass.getX()){
+                        System.out.println("grass 2"+grass1.x);
+                        grass.setVisible(true);
+                        //root1.getChildren().add(grass);
+                        isIn=true;
+                        break;
+                    }
+                }
+           if(!isIn){
+               grass.setVisible(false);
+           }
+
+            }
+        }
+
+
         public void goodsVisible(){
         if(GamePage.goods.get("picturse\\egg.png")!=null)for (ImageView imageView : GamePage.goods.get("picturse\\egg.png")) imageView.setVisible(false);
         if(GamePage.goods.get("picturse\\FEATHER.png")!=null)for (ImageView imageView : GamePage.goods.get("picturse\\FEATHER.png")) imageView.setVisible(false);
@@ -124,75 +154,102 @@ ActionEvent myActionEvent;
         if(GamePage.goods.get("picturse\\beardoll.png")!=null)for (ImageView imageView : GamePage.goods.get("picturse\\beardoll.png")) imageView.setVisible(false);
         if(GamePage.goods.get("picturse\\sepratedmilk.png")!=null)for (ImageView imageView : GamePage.goods.get("picturse\\sepratedmilk.png")) imageView.setVisible(false);
         if( GamePage.goods.get("picturse\\cloth.png")!=null)for (ImageView imageView : GamePage.goods.get("picturse\\cloth.png")) imageView.setVisible(false);
+        if( GamePage.goods.get("picturse\\grass.png")!=null)for (ImageView imageView : GamePage.goods.get("picturse\\grass.png")) imageView.setVisible(false);
         // for (ImageView imageView : GamePage.goods.get()) imageView.setVisible(false);
     }
 
         public void pictureGoodNewing(MouseEvent event){
-            System.out.println(event.getX());
-            //Stage s=(Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene =  ((Node) event.getSource()).getScene();
-            System.out.println(event.getX());
             root1= (AnchorPane) scene.getRoot();
           this.goodsVisible();
             for (Goods productGood : Controller.mainController.goods.productGoods) {
-                System.out.println("piv");
-                boolean isSet =false;
-                if(productGood.name.equalsIgnoreCase(GoodsEnum.BEARDOLL.toString())) this.GoodSetSingleImage("picturse\\beardoll.png",productGood,isSet,root1);
-                else if(productGood.name.equalsIgnoreCase(GoodsEnum.LIONDOLL.toString())) this.GoodSetSingleImage("picturse\\liondoll.png",productGood,isSet,root1);
-                else if(productGood.name.equalsIgnoreCase(GoodsEnum.TIGERDOLL.toString())) this.GoodSetSingleImage("picturse\\tigerdoll.png",productGood,isSet,root1);
-                else if(productGood.name.equalsIgnoreCase(GoodsEnum.CLOTH.toString())) this.GoodSetSingleImage("picturse\\cloth.png",productGood,isSet,root1);
-                else if(productGood.name.equalsIgnoreCase(GoodsEnum.COOKIE.toString())) this.GoodSetSingleImage("picturse\\cookie.png",productGood,isSet,root1);
-              else if(productGood.name.equalsIgnoreCase(GoodsEnum.ICECREAM.toString())) this.GoodSetSingleImage("picturse\\liondoll.png",productGood,isSet,root1);
-               else if(productGood.name.equalsIgnoreCase(GoodsEnum.MILK.toString())) this.GoodSetSingleImage("picturse\\milk.png",productGood,isSet,root1);
-               else if(productGood.name.equalsIgnoreCase(GoodsEnum.SEPARATEDMILK.toString())) this.GoodSetSingleImage("picturse\\sepratedmilk.png",productGood,isSet,root1);
-               else if(productGood.name.equalsIgnoreCase(GoodsEnum.SILK.toString())) this.GoodSetSingleImage("picturse\\silk.png",productGood,isSet,root1);
-             else if(productGood.name.equalsIgnoreCase(GoodsEnum.EGG.toString())) this.GoodSetSingleImage("picturse\\egg.png",productGood,isSet,root1);
-                else if(productGood.name.equalsIgnoreCase(GoodsEnum.FEATHER.toString())) this.GoodSetSingleImage("picturse\\FEATHER.png",productGood,isSet,root1);
-               else if(productGood.name.equalsIgnoreCase(GoodsEnum.FLOUR.toString())){ this.GoodSetSingleImage("picturse\\flour.png",productGood,isSet,root1); }
+                if(productGood.name.equalsIgnoreCase(GoodsEnum.BEARDOLL.toString())) this.GoodSetSingleImage("picturse\\beardoll.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.LIONDOLL.toString())) this.GoodSetSingleImage("picturse\\liondoll.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.TIGERDOLL.toString())) this.GoodSetSingleImage("picturse\\tigerdoll.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.CLOTH.toString())) this.GoodSetSingleImage("picturse\\cloth.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.COOKIE.toString())) this.GoodSetSingleImage("picturse\\cookie.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.ICECREAM.toString())) this.GoodSetSingleImage("picturse\\liondoll.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.MILK.toString())) this.GoodSetSingleImage("picturse\\milk.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.SEPARATEDMILK.toString())) this.GoodSetSingleImage("picturse\\sepratedmilk.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.SILK.toString())) this.GoodSetSingleImage("picturse\\silk.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.EGG.toString())) this.GoodSetSingleImage("picturse\\egg.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.FEATHER.toString())) this.GoodSetSingleImage("picturse\\FEATHER.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.FLOUR.toString())){ this.GoodSetSingleImage("picturse\\flour.png",productGood,root1); }
             }
-
             scene.setRoot(root1);
-            //stage.setScene(scene);
-            //stage.show();
+
         }
-        public void GoodSetSingleImage(String url,Goods productGood,boolean isSet,AnchorPane Roo){
-            System.err.println("ok");
-            //for (int i = 0; i < GamePage.goods.get(url).size()&& !isSet; i++) {
-
-                //if(!GamePage.goods.get(url).get(i).isVisible()) {
-
-                    //System.out.println(GamePage.goods.get(url).get(i).isVisible());
-                   // GamePage.goods.get(url).get(i).setVisible(true);
-                   // GamePage.goods.get(url).get(i).setLayoutX(productGood.x+100);
-                   // GamePage.goods.get(url).get(i).setLayoutY(productGood.y+100);
+        public void GoodSetSingleImage(String url,Goods productGood,AnchorPane Roo){
             Image image = new Image(getClass().getResourceAsStream(url));
             ImageView imageView = new ImageView(image);
             imageView.setX(productGood.x);
             imageView.setY(productGood.y);
             imageView.setFitHeight(50);
             imageView.setFitWidth(50);
-                    System.out.println(productGood.y+100+"\t"+productGood.x+100);
-
-            imageView.setOnMousePressed(new EventHandler<MouseEvent>() {
+            imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
                     if(inputProcessor.processPickUp(productGood.x, productGood.y)){
-                        System.out.println("picking");
-                        imageView.setVisible(false);
+//                        System.out.println("picking");
+//                        imageView.setVisible(true);
+//                        Scene scene =  ((Node) mouseEvent.getSource()).getScene();
+//                        root1= (AnchorPane) scene.getRoot();
+                        GoodMoving(imageView);
+                       // Roo.getChildren().add(imageView);
+//                        scene.setRoot(root1);
+//                        stage.setScene(scene);
+//                        stage.show();
                     }
                 }
             });
+                    this.GoodFading(imageView);
                     Roo.getChildren().add(imageView);
-
-                   // root1.getChildren().add(GamePage.goods.get(url).get(i));
-
-                   // GamePage.animalImageViewHashMap.get(Controller.mainController.animals.chickens.)
-                   // System.out.println(GamePage.goods.get(url).get(i).isVisible());
-                    isSet=true;
-               // }
-           // }
         }
-        public void pictureAnimalNewing(){}
+
+
+    public void GoodMoving(ImageView imageView){
+       {
+           TranslateTransition translate = new TranslateTransition();
+           translate.setNode(imageView);
+           translate.setDuration(Duration.millis(1000));
+           translate.setCycleCount(1);
+           translate.setToX(250);
+           translate.setToY(510);
+           translate.setAutoReverse(true);
+           translate.play();
+           FadeTransition fade = new FadeTransition();
+           fade.setNode(imageView);
+           fade.setDuration(javafx.util.Duration.millis(1000));
+           fade.setCycleCount(1);
+           fade.setInterpolator(Interpolator.LINEAR);
+           fade.setFromValue(1);
+           fade.setToValue(0);
+           fade.play();
+        }
+    }
+    public void GoodFading(ImageView imageView){
+        {
+            FadeTransition fade = new FadeTransition();
+            fade.setNode(imageView);
+            fade.setDuration(javafx.util.Duration.millis(4000));
+            fade.setCycleCount(1);
+            fade.setInterpolator(Interpolator.LINEAR);
+            fade.setFromValue(1);
+            fade.setToValue(0);
+            fade.play();
+            ScaleTransition scale = new ScaleTransition();
+            scale.setNode(imageView);
+            scale.setDuration(javafx.util.Duration.millis(4000));
+            scale.setCycleCount(16);
+            scale.setInterpolator(Interpolator.LINEAR);
+            scale.setToX(0.1);
+            scale.setToY(0.1);
+            scale.setAutoReverse(true);
+            scale.play();
+        }
+    }
+
+    public void pictureAnimalNewing(){}
 
         public void pictureWildeNewing(){}
 
@@ -201,8 +258,6 @@ ActionEvent myActionEvent;
         @Override
         public void run() {
             try{
-
-
                 GamePage.state=true;
                 GamePage.sec++;
                 inputProcessor.turn(1);
@@ -237,6 +292,7 @@ ActionEvent myActionEvent;
 
 
     public void renew() {
+        inputProcessor.turn(1);
         try{ if(GamePage.sec<60) {
             if(GamePage.min<10){
                 if(GamePage.sec<10) timeText.setText(" 0"+GamePage.min+" : 0"+GamePage.sec);
@@ -467,8 +523,8 @@ public void plant(MouseEvent event){
 
 
     public void singleGoodShowing(String url,Stage stages){
-        if(GamePage.animals.get(url)!=null)
-            for (ImageView imageView : GamePage.animals.get(url)) {
+        if(GamePage.goods.get(url)!=null)
+            for (ImageView imageView : GamePage.goods.get(url)) {
             Scene scene = stages.getScene();
             root1= (AnchorPane) scene.getRoot();
             double x,y,high,width;
@@ -634,34 +690,17 @@ public void plant(MouseEvent event){
         }
     }
 
-
     public void buyChicken(ActionEvent event){
-        if(GamePage.state) {
-            if(inputProcessor.processBuy("chicken")){
-                this.addAnimal(event,"picturse\\chicken.png",300,250,80,80,Controller.mainController.animals.chickens.get(Controller.mainController.animals.chickens.size()-1));
-                for (int i = 0; i < GoodsEnum.EGG.getTimeOfRemaining(); i++) {
-                   // this.addEgg(event);
-                }
-            }
+        if(GamePage.state) {   if(inputProcessor.processBuy("chicken")) this.addAnimal(event,"picturse\\chicken.png",300,250,80,80,Controller.mainController.animals.chickens.get(Controller.mainController.animals.chickens.size()-1)); }
         }
-    }
+
     public void buyTurkey(ActionEvent event){
-        if(GamePage.state) {
-            if(inputProcessor.processBuy("turkey")) {
-                this.addAnimal(event,"picturse\\turkey.png",300,250,80,80,Controller.mainController.animals.turkeys.get(Controller.mainController.animals.turkeys.size()-1));
-                for (int i = 0; i < GoodsEnum.FEATHER.getTimeOfRemaining(); i++) {
-                    //this.addFEATHER(event);
-                }
-            }
-        }
+        if(GamePage.state)if(inputProcessor.processBuy("turkey")) this.addAnimal(event,"picturse\\turkey.png",300,250,80,80,Controller.mainController.animals.turkeys.get(Controller.mainController.animals.turkeys.size()-1));
     }
     public void buyBuffalo(ActionEvent event){
         if(GamePage.state) {
             if(inputProcessor.processBuy("bufallo")){
                 this.addAnimal(event,"picturse\\buffalo.png",300,250,80,80,Controller.mainController.animals.bufallos.get(Controller.mainController.animals.bufallos.size()-1));
-                for (int i = 0; i < GoodsEnum.MILK.getTimeOfRemaining(); i++) {
-                    //this.addMILK(event);
-                }
             }
         }
     }
@@ -679,15 +718,11 @@ public void plant(MouseEvent event){
         }
     }
 
-
-
-
     public void buyLion(ActionEvent event){
         if(GamePage.state) {
             for (int i = 0; i < 300; i++) {
                if( Controller.mainController.personsController.CurrentUser.currentLevel.TimeOfLionComes.containsKey(i))
                    this.addWildeAnimal(event,"picturse\\lion.png",300,250,80,80,Controller.mainController.animals.chickens.get(Controller.mainController.animals.lions.size()-1));
-                    //this.addLIONDOLL(event);
             }
             }
     }
@@ -702,7 +737,6 @@ public void plant(MouseEvent event){
             for (int i = 0; i < 300; i++) {
                 if (Controller.mainController.personsController.CurrentUser.currentLevel.TimeOfTigerComes.containsKey(i))
                     this.addWildeAnimal(event, "picturse\\tiger.png", 300, 250, 80, 80,Controller.mainController.animals.chickens.get(Controller.mainController.animals.tigers.size()-1));
-                    //addTIGERDOLL(event);
             }
         }
     }
@@ -712,7 +746,6 @@ public void plant(MouseEvent event){
             for (int i = 0; i < 300; i++) {
                 if (Controller.mainController.personsController.CurrentUser.currentLevel.TimeOfBearComes.containsKey(i))
                     this.addWildeAnimal(event, "picturse\\bear.png", 300, 250, 80, 80,Controller.mainController.animals.chickens.get(Controller.mainController.animals.bears.size()-1));
-                   // addBEARDOLL(event);
             }
         }
     }

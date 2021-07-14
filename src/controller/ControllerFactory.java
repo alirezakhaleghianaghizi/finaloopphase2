@@ -33,8 +33,11 @@ public class ControllerFactory {
         if (factory.name.equalsIgnoreCase(FactoryMoney.MILKSEPERATOR.toString())) return workMilkSeprator( (MilkSeprator) factory,gadget);
         if (factory.name.equalsIgnoreCase(FactoryMoney.ICECREAMFACTORY.toString())) return workIceCreamFactory((IceCreamFactory) factory,gadget);
         if (factory.name.equalsIgnoreCase(FactoryMoney.WEAVING.toString())) return workWeaving( (Weaving) factory,gadget);
-        if (factory.name.equalsIgnoreCase(FactoryMoney.CHICKENERRY.toString())) return workChickennery( (Chickenerry) factory,gadget);
-        return 0;
+        if (factory.name.equalsIgnoreCase(FactoryMoney.CHICKENERRY.toString())) {
+            System.err.println("chickennery");
+            return workChickennery( (Chickenerry) factory,gadget);
+
+        } return 0;
     }
     
     public int  workEggPowder(EggPowder eggPowder, ControllerGadget gadget) {

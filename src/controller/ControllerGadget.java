@@ -4,6 +4,7 @@ import model.gadget.Warehouse;
 import model.gadget.Well;
 import model.gadget.vehicle.Truck;
 import model.goods.Goods;
+import sample.Controller;
 import view.Timing;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class ControllerGadget {
         else  if(this.truck.go) {
             return 0;
         } else {
+            Controller.mainController.personsController.CurrentUser.totalCoins+=good.cost;
             this.truckgoods.add(good);
             this.truck.avaiableCap -= good.capacity;
             warehouse.existence.remove(good);
@@ -42,6 +44,7 @@ public class ControllerGadget {
         if (this.truck.go) return -1;
         else if(!this.truckgoods.contains(good))return 0;
         else{
+            Controller.mainController.personsController.CurrentUser.totalCoins-=good.cost;
             this.truckgoods.remove(good);
             warehouse.existence.add(good);
             warehouse.seprateGoods(good);
