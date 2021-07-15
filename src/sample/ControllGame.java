@@ -158,7 +158,7 @@ public class ControllGame {
 
         public void switchingGamePage(ActionEvent event){
                 try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("gamePage.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("test.fxml"));
                         AnchorPane root1 = (AnchorPane)loader.load();
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         scene = new Scene(root1);

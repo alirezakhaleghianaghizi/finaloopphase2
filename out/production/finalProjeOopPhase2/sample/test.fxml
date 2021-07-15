@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="543.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GamePage">
+   <children>
+      <ImageView fitHeight="603.0" fitWidth="804.0" onMouseMoved="#picturseNewing" onMousePressed="#plant" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/back.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="24.0" layoutY="543.0" mnemonicParsing="false" onAction="#menu" prefHeight="37.0" prefWidth="63.0" style="-fx-background-color: red;" text="menu" textFill="WHITE">
+         <font>
+            <Font name="Poor Richard" size="17.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="149.0" fitWidth="315.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/animalsBuyBar.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="73.0" layoutY="50.0" mnemonicParsing="false" onAction="#buyTurkey" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: gold;" text="200" />
+      <Button layoutX="14.0" layoutY="50.0" mnemonicParsing="false" onAction="#buyChicken" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: gold;" text="100" />
+      <Button layoutX="260.0" layoutY="50.0" mnemonicParsing="false" onAction="#buyCat" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: gold;" text="150" />
+      <Button layoutX="197.0" layoutY="50.0" mnemonicParsing="false" onAction="#buyDog" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: gold;" text="100" />
+      <Button layoutX="134.0" layoutY="50.0" mnemonicParsing="false" onAction="#buyBuffalo" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: gold;" text="400" />
+      <ImageView fx:id="truck" fitHeight="90.0" fitWidth="109.0" layoutX="129.0" layoutY="504.0" onMouseClicked="#truckPage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/truck.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="weel" fitHeight="71.0" fitWidth="91.0" layoutX="356.0" layoutY="63.0" onMousePressed="#weel" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/weel.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="42.0" layoutY="234.0" text="Label" textFill="#7fd65e" />
+      <ImageView fx:id="warhouse" fitHeight="90.0" fitWidth="147.0" layoutX="279.0" layoutY="504.0" onMousePressed="#warHouse" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/warhouse.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="timeText" layoutX="621.0" layoutY="37.0" prefHeight="25.0" prefWidth="63.0" promptText=" 00 : 00" style="-fx-background-color: #9a0000; -fx-text-fill: white;" text=" 00 : 00" />
+      <Label layoutX="635.0" layoutY="11.0" prefHeight="25.0" prefWidth="35.0" text="time">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="puse" layoutX="506.0" layoutY="27.0" mnemonicParsing="false" onAction="#setPuse" prefHeight="37.0" prefWidth="104.0" text="start" />
+      <ImageView fx:id="bakery" fitHeight="83.0" fitWidth="80.0" layoutX="35.0" layoutY="274.0" onMousePressed="#bakery" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/bakery.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="iceCream" fitHeight="83.0" fitWidth="80.0" layoutX="613.0" layoutY="132.0" onMousePressed="#iceCream" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/icecreamfactory.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="milkSeperator" fitHeight="71.0" fitWidth="111.0" layoutX="47.0" layoutY="423.0" onMousePressed="#milkSeperator" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/milkseprator.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="eggPowder" fitHeight="98.0" fitWidth="104.0" layoutX="90.0" layoutY="137.0" onMousePressed="#eggPowder" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/Eggpowder.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="spinnery" fitHeight="71.0" fitWidth="99.0" layoutX="611.0" layoutY="275.0" onMousePressed="#spinnery" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/spinnery.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="weaving" fitHeight="134.0" fitWidth="113.0" layoutX="614.0" layoutY="391.0" onMousePressed="#weaving" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/weaving.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="chickennery" fitHeight="83.0" fitWidth="96.0" layoutX="508.0" layoutY="508.0" onMousePressed="#chickennery" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picturse/chickenerry.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="chickenneryBuild" layoutX="508.0" layoutY="537.0" mnemonicParsing="false" onAction="#chickenneryBuild" style="-fx-background-color: gold;" text="chickenerry 400" />
+      <Button fx:id="weavingBuild" layoutX="623.0" layoutY="436.0" mnemonicParsing="false" onAction="#weavingBuild" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: gold;" text="weawing 550" />
+      <Button fx:id="spinneryBuild" layoutX="613.0" layoutY="302.0" mnemonicParsing="false" onAction="#spinneryBuild" style="-fx-background-color: gold;" text="spinnery 400" />
+      <Button fx:id="iceCreamBuild" layoutX="607.0" layoutY="173.0" mnemonicParsing="false" onAction="#iceCreamBuild" style="-fx-background-color: gold;" text="ice_cream 400" />
+      <Button fx:id="milkSeperatorBuild" layoutX="17.0" layoutY="448.0" mnemonicParsing="false" onAction="#milkSeperatorBuild" style="-fx-background-color: gold;" text="milkseperator 250" />
+      <Button fx:id="bakeryBuild" layoutX="12.0" layoutY="315.0" mnemonicParsing="false" onAction="#bakeryBuild" prefHeight="25.0" prefWidth="104.0" style="-fx-background-color: gold;" text="bakery 250" />
+      <Button fx:id="eggPowderBuild" layoutX="87.0" layoutY="173.0" mnemonicParsing="false" onAction="#eggPowderBuild" prefHeight="25.0" prefWidth="104.0" style="-fx-background-color: gold;" text="eggpowder 150" />
+      <Button layoutX="24.0" layoutY="99.0" mnemonicParsing="false" onAction="#addEgg" text="egg" />
+   </children>
+</AnchorPane>

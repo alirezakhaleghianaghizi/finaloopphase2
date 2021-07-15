@@ -1,5 +1,9 @@
 package controller;
 
+import javafx.animation.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.transform.Rotate;
+import javafx.util.Duration;
 import menus.Logger;
 import model.animal.Animal;
 import model.animal.AnimalEnum;
@@ -16,6 +20,7 @@ import model.animal.wild.WildAnimal;
 import model.factory.Factory;
 import model.goods.*;
 import model.level.Level;
+import sample.GamePage;
 import view.Timing;
 
 import java.util.ArrayList;
@@ -512,6 +517,7 @@ public class MainController {
             }
             if(bool){
                 animals.bufallos.remove(bufallo);
+                this.animalDie(GamePage.animalImageViewHashMap.get(bufallo));
             }
 
         }
@@ -530,6 +536,7 @@ public class MainController {
             }
             if(bool){
                 animals.chickens.remove(chicken);
+                this.animalDie(GamePage.animalImageViewHashMap.get(chicken));
             }
 
         }
@@ -547,6 +554,7 @@ public class MainController {
             }
             if(bool) {
                 animals.turkeys.remove(turkey);
+                this.animalDie(GamePage.animalImageViewHashMap.get(turkey ));
             }
         }
         index2.clear();
@@ -571,6 +579,7 @@ public class MainController {
                 }
                 if(bool){
                     animals.dogs.remove(animal);
+                    this.animalAttaked(GamePage.animalImageViewHashMap.get(animal));
                 }
 
             }
@@ -583,6 +592,7 @@ public class MainController {
             }
             if(bool){
                 animals.lions.remove(animal);
+                this.animalAttaked(GamePage.animalImageViewHashMap.get(animal));
             }
 
         }
@@ -603,6 +613,7 @@ public class MainController {
                 }
                 if(bool){
                     animals.dogs.remove(animal);
+                    this.animalAttaked(GamePage.animalImageViewHashMap.get(animal));
                 }
 
             }
@@ -615,6 +626,7 @@ public class MainController {
             }
             if(bool){
                 animals.tigers.remove(animal);
+                this.animalAttaked(GamePage.animalImageViewHashMap.get(animal));
             }
 
         }
@@ -636,6 +648,7 @@ public class MainController {
                 }
                 if(bool){
                     animals.dogs.remove(animal);
+                    this.animalAttaked(GamePage.animalImageViewHashMap.get(animal));
                 }
             }
         }
@@ -647,6 +660,7 @@ public class MainController {
             }
             if(bool){
                 animals.bears.remove(animal);
+                this.animalAttaked(GamePage.animalImageViewHashMap.get(animal));
             }
 
         }
@@ -706,7 +720,7 @@ public class MainController {
             }
             if(bool){
                 animals.chickens.remove(producerAnimal);
-
+                this.animalAttaked(GamePage.animalImageViewHashMap.get(producerAnimal));
             }
 
             bool=false;
@@ -716,6 +730,7 @@ public class MainController {
             }
             if(bool){
                 animals.turkeys.remove(producerAnimal);
+                this.animalAttaked(GamePage.animalImageViewHashMap.get(producerAnimal));
             }
 
             bool=false;
@@ -725,6 +740,7 @@ public class MainController {
             }
             if(bool){
                 animals.bufallos.remove(producerAnimal);
+                this.animalAttaked(GamePage.animalImageViewHashMap.get(producerAnimal));
             }
 
         }
@@ -754,6 +770,59 @@ public class MainController {
             }
         }
     }
+
+    public void animalAttaked(ImageView imageView){
+        {
+            TranslateTransition translate = new TranslateTransition();
+            translate.setNode(imageView);
+            translate.setDuration(Duration.millis(3000));
+            translate.setCycleCount(1);
+            translate.setToX(1250);
+            translate.setToY(1510);
+            translate.setAutoReverse(true);
+            translate.play();
+            RotateTransition rotate = new RotateTransition();
+            rotate.setNode(imageView);
+            rotate.setDuration(Duration.millis(50));
+            rotate.setCycleCount(TranslateTransition.INDEFINITE);
+            rotate.setInterpolator(Interpolator.LINEAR);
+            rotate.setByAngle(360);
+            rotate.setAxis(Rotate.Z_AXIS);
+            rotate.play();
+            FadeTransition fade = new FadeTransition();
+            fade.setNode(imageView);
+            fade.setDuration(javafx.util.Duration.millis(1000));
+            fade.setCycleCount(1);
+            fade.setInterpolator(Interpolator.LINEAR);
+            fade.setFromValue(1);
+            fade.setToValue(0);
+            fade.play();
+        }
+    }
+    public void animalDie(ImageView imageView){
+        {
+            FadeTransition fade = new FadeTransition();
+            fade.setNode(imageView);
+            fade.setDuration(javafx.util.Duration.millis(1000));
+            fade.setCycleCount(1);
+            fade.setInterpolator(Interpolator.LINEAR);
+            fade.setFromValue(1);
+            fade.setToValue(0);
+            fade.play();
+            ScaleTransition scale = new ScaleTransition();
+            scale.setNode(imageView);
+            scale.setDuration(javafx.util.Duration.millis(1000));
+            scale.setCycleCount(16);
+            scale.setInterpolator(Interpolator.LINEAR);
+            scale.setToX(0.1);
+            scale.setToY(0.1);
+            scale.setAutoReverse(true);
+            scale.play();
+        }
+    }
+
+
+
 
     public void wildComing(){
         if(this.personsController.getCurrentUser().currentLevel.TimeOfBearComes.get(Timing.getCurrentTime())!=null){

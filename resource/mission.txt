@@ -10,7 +10,7 @@
       "task3": "COIN",
       "task3Number": 500,
       "TimeOfTigerComes": {
-        "180": {
+        "10": {
           "cautch": 4,
           "footStep": 2.0,
           "livies": 100,

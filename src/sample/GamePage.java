@@ -389,9 +389,9 @@ grasses.add(imageView);
         if( Controller.mainController.animals.bufallos!=null) for (Bufallo bufallo : Controller.mainController.animals.bufallos) AnimalMovement1(GamePage.animalImageViewHashMap.get(bufallo),GamePage.animalImageViewHashMap.get(bufallo).getX(),GamePage.animalImageViewHashMap.get(bufallo).getY(),bufallo.x,bufallo.y);
         if( Controller.mainController.animals.dogs!=null) for (Dog dog : Controller.mainController.animals.dogs) AnimalMovement1(GamePage.animalImageViewHashMap.get(dog),GamePage.animalImageViewHashMap.get(dog).getX(),GamePage.animalImageViewHashMap.get(dog).getY(),dog.x,dog.y);
         if( Controller.mainController.animals.cats!=null) for (Cat cat: Controller.mainController.animals.cats) AnimalMovement1(GamePage.animalImageViewHashMap.get(cat),GamePage.animalImageViewHashMap.get(cat).getX(),GamePage.animalImageViewHashMap.get(cat).getY(),cat.x,cat.y);
-        if( Controller.mainController.animals.tigers!=null) for (Tiger tiger : Controller.mainController.animals.tigers) AnimalMovement1(GamePage.animalImageViewHashMap.get(tiger),GamePage.animalImageViewHashMap.get(tiger).getX(),GamePage.animalImageViewHashMap.get(tiger).getY(),tiger.x,tiger.y);
-        if( Controller.mainController.animals.lions!=null) for (Lion lion : Controller.mainController.animals.lions) AnimalMovement1(GamePage.animalImageViewHashMap.get(lion),GamePage.animalImageViewHashMap.get(lion).getX(),GamePage.animalImageViewHashMap.get(lion).getY(),lion.x,lion.y);
-        if( Controller.mainController.animals.bears!=null) for (Bear bear : Controller.mainController.animals.bears) AnimalMovement1(GamePage.animalImageViewHashMap.get(bear),GamePage.animalImageViewHashMap.get(bear).getX(),GamePage.animalImageViewHashMap.get(bear).getY(),bear.x,bear.y);
+        if( Controller.mainController.animals.tigers!=null) for (Tiger tiger : Controller.mainController.animals.tigers)if(GamePage.animalImageViewHashMap.get(tiger)!=null) AnimalMovement1(GamePage.animalImageViewHashMap.get(tiger),GamePage.animalImageViewHashMap.get(tiger).getX(),GamePage.animalImageViewHashMap.get(tiger).getY(),tiger.x,tiger.y);
+        if( Controller.mainController.animals.lions!=null) for (Lion lion : Controller.mainController.animals.lions)if(GamePage.animalImageViewHashMap.get(lion)!=null) AnimalMovement1(GamePage.animalImageViewHashMap.get(lion),GamePage.animalImageViewHashMap.get(lion).getX(),GamePage.animalImageViewHashMap.get(lion).getY(),lion.x,lion.y);
+        if( Controller.mainController.animals.bears!=null) for (Bear bear : Controller.mainController.animals.bears)if(GamePage.animalImageViewHashMap.get(bear)!=null) AnimalMovement1(GamePage.animalImageViewHashMap.get(bear),GamePage.animalImageViewHashMap.get(bear).getX(),GamePage.animalImageViewHashMap.get(bear).getY(),bear.x,bear.y);
 
     };
     public  void AnimalMovement1(ImageView imageView , double x1,double y1,double x2,double y2){
@@ -514,12 +514,12 @@ grasses.add(imageView);
     }
     //TODO mach with back work factory
 public void plant(MouseEvent event){
-            if(inputProcessor.plant(event.getX()+120, event.getY()+140)){
+            if(inputProcessor.plant(event.getX(), event.getY())){
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Image image = new Image(getClass().getResourceAsStream("picturse\\grass.png"));
                 ImageView imageView = new ImageView(image);
-                imageView.setX(event.getX()+120);
-                imageView.setY(event.getY()+140);
+                imageView.setX(event.getX());
+                imageView.setY(event.getY());
                 imageView.setFitHeight(60);
                 imageView.setFitWidth(60);
                 ArrayList<ImageView> images=new ArrayList<>();
