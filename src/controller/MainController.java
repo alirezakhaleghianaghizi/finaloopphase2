@@ -18,6 +18,7 @@ import model.animal.wild.Lion;
 import model.animal.wild.Tiger;
 import model.animal.wild.WildAnimal;
 import model.factory.Factory;
+import model.gadget.GadgetEnum;
 import model.goods.*;
 import model.level.Level;
 import sample.GamePage;
@@ -65,6 +66,11 @@ public class MainController {
             this.producing();
             this.decreaseLive();
             this.productingGoodWorkshop();
+           try {
+               this.gadgets.truckCome();
+               this.gadgets.truckgoods=new ArrayList<>();
+               this.gadgets.truck.avaiableCap= GadgetEnum.TRUCK.getCapacity();
+           }catch (Exception e){}
             if(this.isTasksCompleted()) break;
         }
         this.showAfterTurn();

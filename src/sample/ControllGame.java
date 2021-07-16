@@ -141,9 +141,13 @@ public class ControllGame {
                         ControllGame.state=false;
                         ControllGame.timer=new Timer();
                         GamePage.animals=new HashMap<>();
-                        Controller.mainController.personsController.CurrentUser.totalCoins=100000;
+                        GamePage.animalImageViewHashMap=new HashMap<>();
+                        GamePage.goods=new HashMap<>();
+                        GamePage.grassImageViewHashMap=new HashMap<>();
+                        GamePage.wildeAnimal=new HashMap<>();
+                        Controller.mainController.personsController.CurrentUser.totalCoins=Controller.mainController.personsController.CurrentUser.currentLevel.startCoins+Controller.mainController.personsController.CurrentUser.coins;
                         Timing.setCurrentTime(0);
-                        gamePage.setWildeAnimal(event);
+                        //gamePage.setWildeAnimal(event);
                         switchingGamePage(event);
                 }
                 else{

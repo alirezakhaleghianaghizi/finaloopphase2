@@ -72,20 +72,20 @@ public class MyFirstJDBC {
 
     public int newUser() {
         try {
-            String user=this.controller.personsController.CurrentUser.userName;
+            String user=Controller.mainController.personsController.CurrentUser.userName;
             String pass;
             Connection connection = DriverManager.getConnection(url, username, password);
             Statement statement = connection.createStatement();
             ResultSet resultset = statement.executeQuery("select username from user where username =" + "'" + user + "'");
             if (!resultset.next()) return -1;
             else {
-                String sql="UPDATE user SET coins ="+this.controller.personsController.CurrentUser.coins+" WHERE username="+"'"+user+"'";
+                String sql="UPDATE user SET coins ="+Controller.mainController.personsController.CurrentUser.coins+" WHERE username="+"'"+user+"'";
                  statement.executeUpdate(sql);
-                  sql="UPDATE user SET total_coins="+this.controller.personsController.CurrentUser.totalCoins+" WHERE username="+"'"+user+"'";
+                  sql="UPDATE user SET total_coins="+Controller.mainController.personsController.CurrentUser.totalCoins+" WHERE username="+"'"+user+"'";
                  statement.executeUpdate(sql);
-                  sql="UPDATE user SET max_pass_level="+this.controller.personsController.CurrentUser.level+" WHERE username="+"'"+user+"'";
+                  sql="UPDATE user SET max_pass_level="+Controller.mainController.personsController.CurrentUser.level+" WHERE username="+"'"+user+"'";
                  statement.executeUpdate(sql);
-                  sql="UPDATE user SET current_level="+(this.controller.allLevels.levels.indexOf(this.controller.personsController.CurrentUser.currentLevel)+1)+" WHERE username="+"'"+user+"'";
+                  sql="UPDATE user SET current_level="+(Controller.mainController.allLevels.levels.indexOf(Controller.mainController.personsController.CurrentUser.currentLevel)+1)+" WHERE username="+"'"+user+"'";
                  statement.executeUpdate(sql);
                 return 1;
             }

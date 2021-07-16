@@ -62,7 +62,7 @@ public class Controller {
         this.myFirstJDBC=new MyFirstJDBC(this.mainController);
         if(myFirstJDBC.reloadUser(usernameto.getText(),passwordto.getText())==-1){
             massagelable.setText("WRONG USERNAME OR PASSWORD");
-            massagelable.setStyle("-fx-background-color: #ff0000; ");
+            //massagelable.setStyle("-fx-background-color: #ff0000; ");
             Controller.logger("ERROR","WRONG USERNAME OR PASSWORD");
         }
         else if(myFirstJDBC.reloadUser(usernameto.getText(),passwordto.getText())==1) {
@@ -78,7 +78,7 @@ public class Controller {
         this.myFirstJDBC=new MyFirstJDBC(this.mainController);
         if(myFirstJDBC.addUser(usernameto.getText(),passwordto.getText())==false){
             massagelable.setText("user already exist".toUpperCase());
-            massagelable.setStyle("-fx-background-color: #ff0000; ");
+            //massagelable.setStyle("-fx-background-color: #ff0000; ");
             Controller.logger("ERROR","user already exist".toUpperCase());
         }
         else {
@@ -137,40 +137,6 @@ public class Controller {
 
     }
 
-    public void check(){
-        System.out.println("ok");
-    }
-
-
-
-
-
-
-
-
-
-
-    /*@FXML
-    private Circle my;
-    private double x;
-    private double y;
-
-    public void up(ActionEvent e){
-       // System.out.println("up");
-        my.setCenterY(y-=10);
-    }
-     public void down(ActionEvent e){
-         my.setCenterY(y+=10);
-         // System.out.println("down");
-    }
-     public void left(ActionEvent e){
-         my.setCenterX(x-=10);
-         // System.out.println("left");
-    }
-     public void right(ActionEvent e){
-         my.setCenterX(x+=10);
-         // System.out.println("right");
-    }*/
 
 
 
