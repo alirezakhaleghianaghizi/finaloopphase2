@@ -21,6 +21,7 @@ import model.factory.Factory;
 import model.gadget.GadgetEnum;
 import model.goods.*;
 import model.level.Level;
+import sample.Controller;
 import sample.GamePage;
 import view.Timing;
 
@@ -310,10 +311,57 @@ public class MainController {
         return goToDest(xDest,yDest,animal);
     }
 
-    public boolean goToDest(double xDest , double yDest , Animal animal){
-        if (animal.x == xDest && animal.y == yDest) {
+    public boolean goToDest(Goods goods,double xDest , double yDest , Animal animal){
+        if (animal.x <= xDest+40&&animal.x >= xDest-40 && animal.y <= yDest+40&& animal.y >= yDest-40) {
+           try {
+               if(goods!=null){
+                   GamePage.GoodPickCat(GamePage.goodImageViewHashMap.get(goods));
+                   Controller.mainController.goods.pickUp(xDest,yDest,Controller.mainController.gadgets,Controller.mainController.logger);
+               }
+           }catch (Exception e){}
+
             return false;
-        } else if (animal.x == xDest) {
+        }
+        else if (animal.x == xDest) {
+            if (animal.y > yDest) {
+                animal.y-=10;
+            } else {
+                animal.y+=10;
+                return true;
+            }
+        } else if (animal.y == yDest) {
+            if (animal.x > xDest) {
+                animal.x-=10;
+            } else {
+                animal.x+=10;
+                return true;
+            }
+        } else {
+            if (Math.abs(animal.x - xDest) > Math.abs(animal.y - yDest)) {
+                if (animal.x > xDest) {
+                    animal.x-=10;
+                } else {
+                    animal.x+=10;
+                    return true;
+                }
+            } else {
+                if (animal.y > yDest) {
+                    animal.y-=10;
+                    return true;
+                } else {
+                    animal.y+=10;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public boolean goToDest(double xDest , double yDest , Animal animal){
+        if (animal.x <= xDest+40&&animal.x >= xDest-40 && animal.y <= yDest+40&& animal.y >= yDest-40) {
+
+            return false;
+        }
+        else if (animal.x == xDest) {
             if (animal.y > yDest) {
                 animal.y-=10;
             } else {
@@ -352,9 +400,11 @@ public class MainController {
         double path;
         double xDest = 0, yDest = 0;
         double minPath = 9999999;
+        Goods goodsPick[]=new Goods[1];
         for (Goods productGood : goods.productGoods) {
             path = Math.abs(animal.x - productGood.x) + Math.abs(animal.y - productGood.y);
             if (path < minPath) {
+                goodsPick[0]=productGood;
                 minPath = path;
                 xDest = productGood.x;
                 yDest = productGood.y;
@@ -364,7 +414,7 @@ public class MainController {
             animal.randomMoving();
             return false;
         }
-        return goToDest(xDest,yDest,animal);
+        return goToDest(goodsPick[0],xDest,yDest,animal);
     }
 
     public void movingDog(Dog dog){

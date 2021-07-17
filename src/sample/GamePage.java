@@ -103,6 +103,7 @@ public class GamePage {
     public static HashMap<String,ArrayList<ImageView>> goods=new HashMap<>();
     public static HashMap<Animal,ImageView> animalImageViewHashMap=new HashMap<>();
     public static HashMap<Grass,ImageView> grassImageViewHashMap=new HashMap<>();
+    public static HashMap<Goods,ImageView> goodImageViewHashMap=new HashMap<>();
     public InputProcessor inputProcessor=new InputProcessor(Controller.mainController);
 
     TimerTask task;
@@ -195,18 +196,18 @@ public class GamePage {
             root1= (AnchorPane) scene.getRoot();
           this.goodsVisible();
             for (Goods productGood : Controller.mainController.goods.productGoods) {
-                if(productGood.name.equalsIgnoreCase(GoodsEnum.BEARDOLL.toString())) this.GoodSetSingleImage("picturse\\beardoll.png",productGood,root1);
-                else if(productGood.name.equalsIgnoreCase(GoodsEnum.LIONDOLL.toString())) this.GoodSetSingleImage("picturse\\liondoll.png",productGood,root1);
-                else if(productGood.name.equalsIgnoreCase(GoodsEnum.TIGERDOLL.toString())) this.GoodSetSingleImage("picturse\\tigerdoll.png",productGood,root1);
-                else if(productGood.name.equalsIgnoreCase(GoodsEnum.CLOTH.toString())) this.GoodSetSingleImage("picturse\\cloth.png",productGood,root1);
-                else if(productGood.name.equalsIgnoreCase(GoodsEnum.COOKIE.toString())) this.GoodSetSingleImage("picturse\\cookie.png",productGood,root1);
-                else if(productGood.name.equalsIgnoreCase(GoodsEnum.ICECREAM.toString())) this.GoodSetSingleImage("picturse\\ice.png",productGood,root1);
-                else if(productGood.name.equalsIgnoreCase(GoodsEnum.MILK.toString())) this.GoodSetSingleImage("picturse\\milk.png",productGood,root1);
-                else if(productGood.name.equalsIgnoreCase(GoodsEnum.SEPARATEDMILK.toString())) this.GoodSetSingleImage("picturse\\sepratedmilk.png",productGood,root1);
-                else if(productGood.name.equalsIgnoreCase(GoodsEnum.SILK.toString())) this.GoodSetSingleImage("picturse\\silk.png",productGood,root1);
-                else if(productGood.name.equalsIgnoreCase(GoodsEnum.EGG.toString())) this.GoodSetSingleImage("picturse\\egg.png",productGood,root1);
-                else if(productGood.name.equalsIgnoreCase(GoodsEnum.FEATHER.toString())) this.GoodSetSingleImage("picturse\\FEATHER.png",productGood,root1);
-                else if(productGood.name.equalsIgnoreCase(GoodsEnum.FLOUR.toString())){ this.GoodSetSingleImage("picturse\\flour.png",productGood,root1); }
+                if(productGood.name.equalsIgnoreCase(GoodsEnum.BEARDOLL.toString())) this.GoodSetSingleImage(productGood,"picturse\\beardoll.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.LIONDOLL.toString())) this.GoodSetSingleImage(productGood,"picturse\\liondoll.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.TIGERDOLL.toString())) this.GoodSetSingleImage(productGood,"picturse\\tigerdoll.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.CLOTH.toString())) this.GoodSetSingleImage(productGood,"picturse\\cloth.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.COOKIE.toString())) this.GoodSetSingleImage(productGood,"picturse\\cookie.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.ICECREAM.toString())) this.GoodSetSingleImage(productGood,"picturse\\ice.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.MILK.toString())) this.GoodSetSingleImage(productGood,"picturse\\milk.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.SEPARATEDMILK.toString())) this.GoodSetSingleImage(productGood,"picturse\\sepratedmilk.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.SILK.toString())) this.GoodSetSingleImage(productGood,"picturse\\silk.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.EGG.toString())) this.GoodSetSingleImage(productGood,"picturse\\egg.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.FEATHER.toString())) this.GoodSetSingleImage(productGood,"picturse\\FEATHER.png",productGood,root1);
+                else if(productGood.name.equalsIgnoreCase(GoodsEnum.FLOUR.toString())){ this.GoodSetSingleImage(productGood,"picturse\\flour.png",productGood,root1); }
             }
 
             for (Chicken chicken : Controller.mainController.animals.chickens) {
@@ -258,7 +259,7 @@ public class GamePage {
         }
 
 
-        public void GoodSetSingleImage(String url,Goods productGood,AnchorPane Roo){
+        public void GoodSetSingleImage(Goods goods,String url,Goods productGood,AnchorPane Roo){
             Image image = new Image(getClass().getResourceAsStream(url));
             ImageView imageView = new ImageView(image);
             imageView.setX(productGood.x);
@@ -274,12 +275,33 @@ public class GamePage {
                     }
                 }
             });
+                    goodImageViewHashMap.put(goods,imageView);
                     this.GoodFading(imageView);
                     Roo.getChildren().add(imageView);
         }
 
 
     public void GoodMoving(ImageView imageView){
+       {
+           TranslateTransition translate = new TranslateTransition();
+           translate.setNode(imageView);
+           translate.setDuration(Duration.millis(1000));
+           translate.setCycleCount(1);
+           translate.setToX(250-imageView.getX());
+           translate.setToY(510-imageView.getX());
+           translate.setAutoReverse(true);
+           translate.play();
+           FadeTransition fade = new FadeTransition();
+           fade.setNode(imageView);
+           fade.setDuration(javafx.util.Duration.millis(1000));
+           fade.setCycleCount(1);
+           fade.setInterpolator(Interpolator.LINEAR);
+           fade.setFromValue(1);
+           fade.setToValue(0);
+           fade.play();
+        }
+    }
+    public static void GoodPickCat(ImageView imageView){
        {
            TranslateTransition translate = new TranslateTransition();
            translate.setNode(imageView);
