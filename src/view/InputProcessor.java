@@ -192,15 +192,20 @@ public class InputProcessor {
     }
 
     public boolean well(){
-        if(mainController.gadgets.well()){
-            this.mainController.logger.commands.add("INFO,"+this.mainController.logger.lastChange.toString()+",well working.");
-            System.out.println("well working");
-            return true;
-        }else {
-            this.mainController.logger.commands.add("ERROR,"+this.mainController.logger.lastChange.toString()+",well is full.");
-            System.err.println("The well is still full ");
-            return false;
+        try {
+            if(mainController.gadgets.well()){
+                this.mainController.logger.commands.add("INFO,"+this.mainController.logger.lastChange.toString()+",well working.");
+                System.out.println("well working");
+                return true;
+            }else {
+                this.mainController.logger.commands.add("ERROR,"+this.mainController.logger.lastChange.toString()+",well is full.");
+                System.err.println("The well is still full ");
+                return false;
+            }
+        } catch (Exception e) {
+
         }
+        return true;
     }
 
     public boolean workSituation(Factory factory){

@@ -1,26 +1,7 @@
 {
-  "dateStartOperatingLogger": "Jul 17, 2021, 5:28:38 PM",
-  "lastChange": "Jul 17, 2021, 5:29:19 PM",
+  "dateStartOperatingLogger": "Jul 17, 2021, 9:51:32 PM",
+  "lastChange": "Jul 17, 2021, 9:51:34 PM",
   "commands": [
-    "ALARM,Sat Jul 17 17:28:39 IRDT 2021,SWITCHING TO LOG IN PAGE. ",
-    "ALARM,Sat Jul 17 17:28:45 IRDT 2021,LOG IN. ",
-    "WARNING,Sat Jul 17 17:28:46 IRDT 2021,START LEVEL 1. ",
-    "WARNING,Sat Jul 17 17:28:46 IRDT 2021,GAME PAGE .. ",
-    "INFO,Sat Jul 17 17:28:46 IRDT 2021,BUY dog .",
-    "WARNING,Sat Jul 17 17:28:48 IRDT 2021,GAME PAGE .. ",
-    "INFO,Sat Jul 17 17:28:48 IRDT 2021,BUY chicken .",
-    "WARNING,Sat Jul 17 17:28:49 IRDT 2021,GAME PAGE .. ",
-    "INFO,Sat Jul 17 17:28:49 IRDT 2021,plant in x : 340.6666666666667 ,y : 388.6666666666667.",
-    "WARNING,Sat Jul 17 17:28:49 IRDT 2021,GAME PAGE .. ",
-    "INFO,Sat Jul 17 17:28:49 IRDT 2021,BUY cat .",
-    "WARNING,Sat Jul 17 17:28:56 IRDT 2021,GAME PAGE .. ",
-    "INFO,Sat Jul 17 17:28:56 IRDT 2021,BUY bufallo .",
-    "WARNING,Sat Jul 17 17:28:58 IRDT 2021,GAME PAGE .. ",
-    "INFO,Sat Jul 17 17:28:58 IRDT 2021,plant in x : 323.3333333333333 ,y : 342.6666666666667.",
-    "WARNING,Sat Jul 17 17:28:59 IRDT 2021,GAME PAGE .. ",
-    "INFO,Sat Jul 17 17:28:59 IRDT 2021,PICKUP MILK TO WAREHOUSE.",
-    "WARNING,Sat Jul 17 17:29:17 IRDT 2021,menu game bar .. ",
-    "WARNING,Sat Jul 17 17:29:19 IRDT 2021,RESUME GAME .. ",
-    "WARNING,Sat Jul 17 17:29:19 IRDT 2021,GAME PAGE .. "
+    "ALARM,Sat Jul 17 21:51:34 IRDT 2021,SUCCESFULLY EXIT. "
   ]
 }
